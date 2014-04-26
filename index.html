@@ -1,0 +1,33 @@
+<html>
+<head>
+    <link rel="stylesheet" href="assets/css/login.css" />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="signin-card">
+            <img
+                class="profile-img"
+                src="assets/ui/avatar_2x.png"
+            />
+            <form>
+                <select id="user" tabindex="1"/>
+                <input id="pass" placeholder="Password" type="password" tabindex="2"/>
+                <button type="submit" tabindex="3">Sign in</button>
+            </form>
+        </div>
+    </div>
+    <div class="actions-bar">
+        <div class="action action-shutdown" onclick="javascript: lightdm.shutdown();">
+            <i></i> Shut down
+        </div>
+        <div class="action action-reboot" onclick="javascript: lightdm.restart();">
+            <i></i> Restart
+        </div>
+        <div id="clock" class="action action-clock">00:00</div>
+    </div>
+    <script src="assets/js/mock.js"></script>
+    <script src="assets/js/clock.js"></script>
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script src="assets/js/login.js"></script>
+</body>
+</html>
