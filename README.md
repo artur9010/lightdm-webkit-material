@@ -37,3 +37,10 @@ There are a couple of methods you can use to set your user picture in LightDM:
 or
 
 - Add `Icon=/path/to/your/face.png` to the bottom of `/var/lib/AccountsService/users/<youraccountname>`
+
+
+### License
+
+Copyright © 2014 Max Glenister moglenstar@gmail.com
+
+This work is free. You can redistribute it and/or modify it under the terms of the WTFPL (Do What The Fuck You Want To Public License), Version 2, as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
