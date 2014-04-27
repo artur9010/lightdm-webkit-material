@@ -23,7 +23,7 @@ I created this for use on Arch Linux on my HP Chromebook 11, so it only has the 
 
 Instructions will differ for every platform, but I can tell you how to install it on Arch Linux:
 
-1. Install and enable `lightdm` and `lightdm-greeter-webkit`
+1. Install and enable `lightdm` and `lightdm-webkit-greeter`
 2. In the terminal, `cd` to `/usr/share/lightdm-webkit/themes/`
 3. Clone this repository here, it should create a folder called `lightdm-webkit-google`
 4. Enable the theme in your `/etc/lightdm/lightdm-webkit-greeter.conf`
