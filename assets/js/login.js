@@ -1,6 +1,4 @@
-var login = login || {};
-
-(function (module, ldm, $) {
+var login = (function (lightdm, $) {
     var selected_user = null;
     var password = null
     var $user = $('#user');
@@ -75,12 +73,11 @@ var login = login || {};
         console.log('Prompt: ' + e);
     };
 
-    module.init = function () {
+    // exposed outside of the closure
+    var init = function () {
         $(function () {
             setup_users_list();
             select_user_from_list();
-
-            $('.signin-card').fadeIn(500);
 
             $user.on('change', function (e) {
                 e.preventDefault();
@@ -94,6 +91,10 @@ var login = login || {};
             });
         });
     };
-} (login, lightdm, jQuery));
+
+    return {
+        init: init
+    };
+} (lightdm, jQuery));
 
 login.init();
