@@ -5,7 +5,65 @@
     <link rel="stylesheet" href="assets/css/login.css" />
 </head>
 <body>
+    <a class="settings" href="#settings">
+        Settings
+    </a>
     <div class="wrapper">
+        <div class="card settings-card" id="settings">
+            <form>
+                <label>
+                    <span>
+                        Display the user photo?
+                    </span>
+                    <select
+                        id="show_photo"
+                        name="show_photo"
+                    >
+                        <option value="1">
+                            Yes
+                        </option>
+                        <option value="0">
+                            No
+                        </option>
+                    </select>
+                </label>
+                <label>
+                    <span>
+                        Background image
+                    </span>
+                    <input
+                        id="background"
+                        name="background"
+                        placeholder="Specify the full path or URL to an image to use it."
+                        type="text"
+                    />
+                </label>
+                <label>
+                    <span>
+                        Clock style
+                    </span>
+                    <select
+                        id="clock_style"
+                        name="clock_style"
+                    >
+                        <option value="0">
+                            HH:MM (24h)
+                        </option>
+                        <option value="1">
+                            HH:MM (12h)
+                        </option>
+                    </select>
+                </label>
+                <div class="buttons-wrap">
+                    <button type="button" class="btn cancel">
+                        Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
         <div class="card signin-card">
             <img
                 class="profile-img"
@@ -33,5 +91,6 @@
     <script src="assets/js/clock.js"></script>
     <script src="assets/js/jquery-2.1.0.min.js"></script>
     <script src="assets/js/login.js"></script>
+    <script src="assets/js/settings.js"></script>
 </body>
 </html>
