@@ -136,7 +136,7 @@ body {
     height: 36px;
     line-height: 36px;
     border-radius: 3px;
-    transition: all 0.218s;
+    transition: border 0.218s, background 0.218s, box-shadow 0.218s, color 0.218s;
     text-shadow: 0 1px 0 #fff;
     color: #444;
     background: #F3F3F3;
@@ -152,7 +152,7 @@ body {
 }
 .btn:active {
     box-shadow: inset 0 1px 2px rgba(0,0,0,.3);
-    border-color: #C6C6C6
+    border-color: #C6C6C6;
 }
 .btn-primary {
     border: 1px solid #3079ed;
@@ -171,6 +171,7 @@ body {
     background-image: linear-gradient(top, #4d90fe, #357ae8);
 }
 .btn-primary:active {
+    border-color: #2f5bb7;
     background-color: #357ae8;
     background-image: -webkit-linear-gradient(top, #4d90fe, #357ae8);
     background-image: linear-gradient(top, #4d90fe, #357ae8);
