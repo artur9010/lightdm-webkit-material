@@ -19,6 +19,14 @@ I created this for use on Arch Linux on my HP Chromebook 11, so it only has the 
 - Shutting the computer down
 - A clock!
 
+### The `settings-dialog` branch
+
+This is a feature branch that I'm currently working on. Currently you can control the following settings:
+
+- Show/hide the profile picture
+- Change the background
+- Set the clock to 12 or 24 hour format
+
 ### How to install
 
 Instructions will differ for every platform, but I can tell you how to install it on Arch Linux:
