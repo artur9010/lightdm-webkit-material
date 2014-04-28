@@ -28,15 +28,18 @@ body {
     position: relative;
     min-height: 100%;
 }
-.signin-card {
-    display: none;
-    width: 274px;
+.card {
+    overflow: hidden;
     padding: 40px;
     background-color: #f7f7f7;
     background-color: rgba(240,240,240,.8);
     margin: 125px auto 25px;
     border-radius: 2px;
     box-shadow: 0 2px 2px rgba(0,0,0,.3);
+}
+.signin-card {
+    width: 274px;
+    max-width: 90%;
 }
 .profile-img {
     width: 96px;
@@ -51,8 +54,18 @@ body {
     border: 1px solid #c0c0c0;
     outline: none;
 }
-.signin-card input,
-.signin-card select {
+.card label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 1em;
+}
+.card label span {
+    display: block;
+    margin-bottom: 1em;
+}
+.card input[type=text],
+.card input[type=password],
+.card select {
     -webkit-appearance: none;
     height: 44px;
     font-size: 16px;
@@ -70,49 +83,53 @@ body {
     color: #404040;
     outline: none;
 }
-.signin-card form .error {
+.card select {
+    background-image: url(../ui/grey-disclosure-arrow-up-down.png);
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+}
+.card form {
+    margin: 0;
+    padding: 0;
+}
+.card form .error {
     border: 1px solid #dd4b39;
     z-index: 2;
 }
-.signin-card input:hover,
-.signin-card select:hover {
+.card input[type=text]:hover,
+.card input[type=password]:hover,
+.card select:hover {
     border: 1px solid #b9b9b9;
     border-top: 1px solid #a0a0a0;
     box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
     z-index: 3;
 }
-.signin-card input:active,
-.signin-card select:active,
-.signin-card input:focus,
-.signin-card select:focus {
+.card input[type=text]:active,
+.card input[type=text]:focus,
+.card input[type=password]:active,
+.card input[type=password]:focus,
+.card select:active,
+.card select:focus {
     border: 1px solid #4d90fe;
     box-shadow: inset 0 1px 2px rgba(0,0,0,.3);
     z-index: 3;
 }
 #user {
     margin-bottom: 0;
-    background-image: url(../ui/grey-disclosure-arrow-up-down.png);
-    background-position: 250px 50%;
-    background-repeat: no-repeat;
 }
 #pass {
     margin-top: -1px;
 }
-.signin-card button {
+.btn {
     outline: 0;
     width: 100%;
     display: block;
     z-index: 1;
     position: relative;
     padding: 0;
+    margin: 0;
     font-size: 13px;
     font-family: inherit;
-    border: 1px solid #3079ed;
-    color: #fff;
-    text-shadow: 0 1px rgba(0,0,0,.1);
-    background-color: #4d90fe;
-    background-image: -webkit-linear-gradient(top, #4d90fe, #4787ed);
-    background-image: linear-gradient(top, #4d90fe, #4787ed);
     min-width: 46px;
     text-align: center;
     font-weight: 700;
@@ -120,23 +137,51 @@ body {
     line-height: 36px;
     border-radius: 3px;
     transition: all 0.218s;
+    text-shadow: 0 1px 0 #fff;
+    color: #444;
+    background: #F3F3F3;
+    border: solid 1px #D9D9D9;
 }
-.signin-card button:hover {
+.btn:hover {
+    transition: all 0s;
+    text-decoration: none;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    background: #F4F4F4;
+    border-color: #C0C0C0;
+    color: #333;
+}
+.btn:active {
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.3);
+    border-color: #C6C6C6
+}
+.btn-primary {
+    border: 1px solid #3079ed;
+    color: #fff;
+    text-shadow: 0 1px rgba(0,0,0,.1);
+    background-color: #4d90fe;
+    background-image: -webkit-linear-gradient(top, #4d90fe, #4787ed);
+    background-image: linear-gradient(top, #4d90fe, #4787ed);
+}
+.btn-primary:hover {
     border: 1px solid #2f5bb7;
     color: #fff;
     text-shadow: 0 1px rgba(0,0,0,.3);
     background-color: #357ae8;
     background-image: -webkit-linear-gradient(top, #4d90fe, #357ae8);
     background-image: linear-gradient(top, #4d90fe, #357ae8);
-    transition: all 0s;
-    text-decoration: none;
-    box-shadow: 0 1px 1px rgba(0,0,0,.1);
 }
-.signin-card button:active {
+.btn-primary:active {
     background-color: #357ae8;
     background-image: -webkit-linear-gradient(top, #4d90fe, #357ae8);
     background-image: linear-gradient(top, #4d90fe, #357ae8);
-    box-shadow: inset 0 1px 2px rgba(0,0,0,.3);
+}
+.buttons-wrap {
+    float: right;
+}
+.buttons-wrap .btn {
+    width: auto;
+    display: inline-block;
+    padding: 0 20px;
 }
 .actions-bar {
     position: fixed;
