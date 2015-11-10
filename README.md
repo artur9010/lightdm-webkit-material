@@ -7,6 +7,7 @@ It's designed to be a mix between the usual Google log in screen, and the log in
 ### Screenshot
 
 ![](http://uk.omg.li/VE7v/69938074-bdf6-443d-bbeb-85f0a9f2f6de.png)
+![](http://uk.omg.li/VF8G/by%20default%202014-04-28%20at%2015.53.50.png)
 
 ### Features
 
@@ -18,6 +19,14 @@ I created this for use on Arch Linux on my HP Chromebook 11, so it only has the 
 - Restarting the computer
 - Shutting the computer down
 - A clock!
+
+### The `settings-dialog` branch
+
+This is a feature branch that I'm currently working on. Currently you can control the following settings:
+
+- Show/hide the profile picture
+- Change the background
+- Set the clock to 12 or 24 hour format
 
 ### How to install
 
@@ -43,4 +52,4 @@ or
 
 Copyright © 2014 Max Glenister moglenstar@gmail.com
 
-This work is free. You can redistribute it and/or modify it under the terms of the WTFPL (Do What The Fuck You Want To Public License), Version 2, as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.
+This work is free. You can redistribute it and/or modify it under the terms of the WTFPL (Do What The Fuck You Want To Public License), Version 2, as published by Sam Hocevar. See http://www.wtfpl.net/ for more details..

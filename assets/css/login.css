@@ -41,6 +41,22 @@ body {
     width: 274px;
     max-width: 90%;
 }
+.settings-card {
+    display: none;
+    width: 30%;
+}
+.settings-card:target {
+    display: block;
+}
+.settings-card:target + .signin-card {
+    display: none;
+}
+@media all and (max-width: 800px) {
+    .settings-card {
+        width: 70%;
+        max-width: 90%;
+    }
+}
 .profile-img {
     width: 96px;
     height: 96px;
@@ -226,4 +242,23 @@ body {
 }
 .action-reboot i {
     background-image: url(../ui/action-reboot.png);
+}
+.settings {
+    display: inline-block;
+    text-indent: 99em;
+    overflow: hidden;
+    width: 28px;
+    height: 28px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../ui/action-settings.png);
+    opacity: .4;
+    transition: all 0.2s;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.settings:hover {
+    opacity: 1;
 }
