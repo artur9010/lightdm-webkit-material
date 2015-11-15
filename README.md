@@ -4,7 +4,7 @@ This is a theme for LightDM Webkit (`lightdm-webkit-greeter`).
 
 It's designed to be a mix between the usual Google log in screen, and the log in screen that you will find on ChromeOS.
 
-### Screenshot
+### Screenshot (outdated)
 
 ![](http://uk.omg.li/VE7v/69938074-bdf6-443d-bbeb-85f0a9f2f6de.png)
 ![](http://uk.omg.li/VF8G/by%20default%202014-04-28%20at%2015.53.50.png)
@@ -21,6 +21,9 @@ I created this for use on Arch Linux on my HP Chromebook 11, so it only has the 
 - Option to hide the profile picture
 - Option to change the background
 - Option to change clock format (12/24h)
+- Option to select session
+- Option to select language
+- Option to select keyboard layout (eq. pl_PL for Polish keyboard)
 - A clock!
 
 ### How to install

@@ -1,8 +1,9 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="assets/css/login.css" />
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 </head>
 <body>
     <a class="settings" href="#settings">
@@ -84,11 +85,17 @@
         </div>
     </div>
     <div class="actions-bar">
-        <div class="action action-shutdown" onclick="javascript: lightdm.shutdown();">
-            <i></i> Shut down
+        <div id="action-shutdown" class="action" onclick="lightdm.shutdown();">
+            <i class="fa fa-power-off"></i> Shut down
         </div>
-        <div class="action action-reboot" onclick="javascript: lightdm.restart();">
-            <i></i> Restart
+        <div id="action-reboot" class="action" onclick="lightdm.restart();">
+            <i class="fa fa-refresh"></i> Restart
+        </div>
+        <div id="action-suspend" class="action" onclick="lightdm.suspend();">
+            <i class="fa fa-power-off fa-rotate-90"></i> Suspend
+        </div>
+        <div id="action-hibernate" class="action" onclick="lightdm.hibernate();">
+            <i class="fa fa-power-off"></i> Hibernate
         </div>
         <div id="clock" class="action action-clock">00:00:00</div>
     </div>

@@ -252,14 +252,6 @@ body {
     background-size: cover;
 }
 
-.action-shutdown i {
-    background-image: url(../ui/action-shutdown.png);
-}
-
-.action-reboot i {
-    background-image: url(../ui/action-reboot.png);
-}
-
 .settings {
     display: inline-block;
     text-indent: 99em;

@@ -4,7 +4,7 @@ var login = (function (lightdm, $) {
     var $user = $('#user');
     var $pass = $('#pass');
     var $session = $('#session');
-    var $lang = $("#lang");
+    var $lang = $("#language");
     var $keyboard_layout = $("#keyboard_layout");
 
     // private functions
@@ -128,11 +128,26 @@ var login = (function (lightdm, $) {
     // exposed outside of the closure
     var init = function () {
         $(function () {
+            // Setup select lists
             setup_users_list();
             select_user_from_list();
             setup_sessions_list();
             setup_language_list();
             setup_layout_list();
+            
+            // Hide usunsed/blocked/disabled options
+            if(!lightdm.can_restart){
+                $("#action-reboot").hide();
+            }
+            if(!lightdm.can_shutdown){
+                $("#action-shutdown").hide();
+            }
+            if(!lightdm.can_hibernate){
+                $("#action-hibernate").hide();
+            }
+            if(!lightdm.can_suspend){
+                $("#action-suspend").hide();
+            }
 
             $user.on('change', function (e) {
                 e.preventDefault();
