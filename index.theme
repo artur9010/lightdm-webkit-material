@@ -3,4 +3,4 @@ name=lightdm-webkit-google
 description=A Google/ChromeOS style greeter theme
 engine=lightdm-webkit-greeter
 url=index.html
-session=mate
+session=gnome

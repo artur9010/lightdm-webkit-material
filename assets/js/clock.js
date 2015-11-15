@@ -1,25 +1,25 @@
-function startTime() {
-    var today=new Date();
-    var h=today.getHours();
-    var m=today.getMinutes();
-    if(window.login_settings['clock_style']==1){
-        h=makeHourTwelveBased(h);
+function startTime(){
+    var date = new Date();
+    
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+    
+    if(window.login_settings['clock_style'] == 1){
+        if(hour > 12){
+            hour = hour - 12;
+        }
     }
-    m=checkTime(m);
-    document.getElementById('clock').innerHTML=h+":"+m;
+    
+    if(minute < 10){
+        minute = "0" + minute;
+    }
+    
+    if(second < 10){
+        second = "0" + second;
+    }
+    
+    $("#clock").html(hour + ":" + minute + ":" + second);
+}
 
-    t=setTimeout('startTime()', 500)
-}
-function makeHourTwelveBased(i) {
-    if (i > 12) {
-        i = i-12;
-    }
-    return i;
-}
-function checkTime(i) {
-    if (i<10) {
-        i="0" + i;
-    }
-    return i
-}
-window.onload=startTime;
+setInterval(startTime, 500);
