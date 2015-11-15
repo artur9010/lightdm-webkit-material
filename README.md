@@ -33,11 +33,11 @@ Instructions will differ for every platform, but I can tell you how to install i
 1. Install and enable `lightdm` and `lightdm-webkit-greeter`
 2. In the terminal, `cd` to `/usr/share/lightdm-webkit/themes/`
 3. Clone this repository
-- Type `git clone https://github.com/artur9010/lightdm-webkit-google.git`
-- or, if you want to use devdevelopment version, use `git clone -b dev https://github.com/artur9010/lightdm-webkit-google.git`
+  - Type `git clone https://github.com/artur9010/lightdm-webkit-google.git`
+  - or, if you want to use devdevelopment version, use `git clone -b dev https://github.com/artur9010/lightdm-webkit-google.git`
 4. Enable the theme in your `/etc/lightdm/lightdm-webkit2-greeter.conf`
-- Search for `greeter` section
-- Set `webkit-theme` to `lightdm-webkit-google`
+  - Search for `greeter` section
+  - Set `webkit-theme` to `lightdm-webkit-google`
 
 ### Updating
 1. In the terminal, `cd` to `/usr/share/lightdm-webkit/themes/lightdm-webkit-google/`
