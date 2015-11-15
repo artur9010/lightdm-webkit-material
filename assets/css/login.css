@@ -1,10 +1,10 @@
 @font-face {
     font-family: "Arimo Bold";
-    src: url(../font/Arimo-Bold.ttf);
+    src: url(../fonts/Arimo-Bold.ttf);
 }
 @font-face {
     font-family: "Arimo Regular";
-    src: url(../font/Arimo-Regular.ttf);
+    src: url(../fonts/Arimo-Regular.ttf);
 }
 
 html, body {

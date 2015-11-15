@@ -6,7 +6,9 @@ function startTime(){
     var second = date.getSeconds();
     
     if(window.login_settings['clock_style'] == 1){
-        hour = makeHourTwelveBased(hour);
+        if(hour > 12){
+            hour = hour - 12;
+        }
     }
     
     if(minute < 10){
@@ -18,13 +20,6 @@ function startTime(){
     }
     
     $("#clock").html(hour + ":" + minute + ":" + second);
-}
-    
-function makeHourTwelveBased(i) {
-    if (i > 12) {
-        i = i-12;
-    }
-    return i;
 }
 
 setInterval(startTime, 500);
