@@ -18,15 +18,10 @@ I created this for use on Arch Linux on my HP Chromebook 11, so it only has the 
 - Seeing their profile picture
 - Restarting the computer
 - Shutting the computer down
+- Option to hide the profile picture
+- Option to change the background
+- Option to change clock format (12/24h)
 - A clock!
-
-### The `settings-dialog` branch
-
-This is a feature branch that I'm currently working on. Currently you can control the following settings:
-
-- Show/hide the profile picture
-- Change the background
-- Set the clock to 12 or 24 hour format
 
 ### How to install
 
@@ -49,7 +44,4 @@ or
 
 
 ### License
-
-Copyright © 2014 Max Glenister moglenstar@gmail.com
-
 This work is free. You can redistribute it and/or modify it under the terms of the WTFPL (Do What The Fuck You Want To Public License), Version 2, as published by Sam Hocevar. See http://www.wtfpl.net/ for more details..
