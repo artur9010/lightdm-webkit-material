@@ -12,13 +12,11 @@ var login = (function (lightdm, $) {
         var $list = $user;
         var to_append = null;
         $.each(lightdm.users, function (i) {
-            var username = lightdm.users[i].name;
-            var dispname = lightdm.users[i].display_name;
             $list.append(
                 '<option value="' +
-                username +
+                lightdm.users[i].name +
                 '">' +
-                dispname +
+                lightdm.users[i].display_name +
                 '</option>'
             );
         });
@@ -36,8 +34,9 @@ var login = (function (lightdm, $) {
         if(selected_user !== null) {
             window.start_authentication(selected_user);
         }
-
-        $pass.trigger('focus');
+        
+        $pass.val(""); //clear the password input
+        $pass.trigger('focus'); //focus the password input
     };
     
     var setup_sessions_list = function() {
@@ -64,7 +63,7 @@ var login = (function (lightdm, $) {
             var lang = lightdm.languages[i];
             $list.append(
                 '<option value="' +
-                lang.key +
+                lang.code +
                 '">' +
                 lang.name +
                 '</option>'
@@ -74,13 +73,12 @@ var login = (function (lightdm, $) {
     
     var setup_layout_list = function(){
         var $list = $keyboard_layout;
-        var to_append = null;
         
         $.each(lightdm.layouts, function(i) {
             var lang = lightdm.layouts[i];
             $list.append(
                 '<option value="' +
-                lang.key +
+                lang.name +
                 '">' +
                 lang.name +
                 '</option>'
