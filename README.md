@@ -4,10 +4,10 @@ This is a theme for LightDM Webkit (`lightdm-webkit-greeter`).
 
 It's designed to be a mix between the usual Google log in screen, and the log in screen that you will find on ChromeOS.
 
-### Screenshot (outdated)
+### Screenshots
 
-![](http://uk.omg.li/VE7v/69938074-bdf6-443d-bbeb-85f0a9f2f6de.png)
-![](http://uk.omg.li/VF8G/by%20default%202014-04-28%20at%2015.53.50.png)
+![](http://i.imgur.com/Y7dY8K7.jpg)
+![](http://i.imgur.com/JklIV5o.jpg)
 
 ### Features
 

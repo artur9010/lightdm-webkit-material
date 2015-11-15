@@ -19,7 +19,7 @@ if (!('lightdm' in window)) {
     lightdm.default_language = lightdm.languages[0];
     lightdm.layouts = [
         {
-            name: "test",
+            name: "us",
             short_description: "test description",
             short_description:"really long epic description"
         }
@@ -27,6 +27,11 @@ if (!('lightdm' in window)) {
     lightdm.default_layout = lightdm.layouts[0];
     lightdm.layout = lightdm.layouts[0];
     lightdm.sessions = [
+        {
+            key: "key0",
+            name: "GNOME",
+            comment: "no comment"
+        },
         {
             key: "key1",
             name: "session 1",

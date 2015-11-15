@@ -93,6 +93,10 @@ var login = (function (lightdm, $) {
             'src',
             lightdm.users[idx].image
         );
+        
+        $('.profile-img').error(function(){
+            $('.profile-img').attr("src", "assets/ui/avatar_2x.png");
+        })
     };
 
     // Functions that lightdm needs
