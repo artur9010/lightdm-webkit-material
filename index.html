@@ -13,12 +13,21 @@
             <form>
                 <label>
                     <span>
+                        Language
+                    </span>
+                    <select id="language" name="language"></select>
+                </label>
+                <label>
+                    <span>
+                        Keyboard layout
+                    </span>
+                    <select id="keyboard_layout" name="keyboard_layout"></select>
+                </label>
+                <label>
+                    <span>
                         Display the user photo?
                     </span>
-                    <select
-                        id="show_photo"
-                        name="show_photo"
-                    >
+                    <select id="show_photo" name="show_photo">
                         <option value="1">
                             Yes
                         </option>
@@ -31,12 +40,7 @@
                     <span>
                         Background image
                     </span>
-                    <input
-                        id="background"
-                        name="background"
-                        placeholder="Specify the full path or URL to an image to use it."
-                        type="text"
-                    />
+                    <input id="background" name="background" placeholder="Specify the full path or URL to an image to use it." type="text"/>
                 </label>
                 <label>
                     <span>
@@ -47,10 +51,10 @@
                         name="clock_style"
                     >
                         <option value="0">
-                            HH:MM (24h)
+                            HH:MM:SS (24h)
                         </option>
                         <option value="1">
-                            HH:MM (12h)
+                            HH:MM:SS (12h)
                         </option>
                     </select>
                 </label>
@@ -70,9 +74,10 @@
                 src="assets/ui/avatar_2x.png"
             />
             <form>
-                <select id="user" tabindex="1"/>
+                <select id="user" tabindex="1"/></select>
                 <input id="pass" placeholder="Password" type="password" tabindex="2"/>
-                <button type="submit" tabindex="3" class="btn btn-primary">
+                <select id="session" tabindex="3"></select>
+                <button type="submit" tabindex="4" class="btn btn-primary">
                     Sign in
                 </button>
             </form>
@@ -85,11 +90,12 @@
         <div class="action action-reboot" onclick="javascript: lightdm.restart();">
             <i></i> Restart
         </div>
-        <div id="clock" class="action action-clock">00:00</div>
+        <div id="clock" class="action action-clock">00:00:00</div>
     </div>
+    
+    <script src="assets/js/jquery.js"></script>
     <script src="assets/js/mock.js"></script>
     <script src="assets/js/clock.js"></script>
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
     <script src="assets/js/login.js"></script>
     <script src="assets/js/settings.js"></script>
 </body>
