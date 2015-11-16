@@ -1,14 +1,8 @@
-@font-face {
-    font-family: "Roboto Regular";
-    src: url(../fonts/Roboto-Regular.ttf);
-}
-
 html, body {
     height: 100%; width: 100%; overflow: hidden;
 }
 
 body {
-    font-family: "Roboto Regular", sans-serif !important;
     background-image: url("../ui/wallpaper.jpg");
     background-size: cover;
     background-attachment: fixed;
@@ -25,22 +19,9 @@ body {
     max-width: 90%;
 }
 
-@media all and (max-width: 800px) {
-    .settings-card {
-        width: 70%;
-        max-width: 90%;
-    }
-}
-
 .profile-img {
     width: 96px;
     margin: 0 auto 40px;
     display: block;
     border-radius: 100%;
-}
-
-.action {
-    cursor: pointer;
-    float: left;
-    margin-right: 15px;
 }

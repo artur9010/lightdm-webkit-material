@@ -84,24 +84,28 @@
     
         <footer class="mdl-mini-footer">
             <div class="mdl-mini-footer__left-section">
-                <div id="action-shutdown" class="action" onclick="lightdm.shutdown();">
-                    <i class="fa fa-power-off"></i> Shut down
-                </div>
-                <div id="action-reboot" class="action" onclick="lightdm.restart();">
-                    <i class="fa fa-refresh"></i> Restart
-                </div>
-                <div id="action-suspend" class="action" onclick="lightdm.suspend();">
-                    <i class="fa fa-power-off fa-rotate-90"></i> Suspend
-                </div>
-                <div id="action-hibernate" class="action" onclick="lightdm.hibernate();">
-                    <i class="fa fa-power-off"></i> Hibernate
-                </div>
-                <div id="action-settings" class="action">
-                    <i class="fa fa-cog"></i> Settings
-                </div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li id="action-shutdown" onclick="lightdm.shutdown();">
+                        <i class="fa fa-power-off"></i> Shut down
+                    </li>
+                    <li id="action-reboot" onclick="lightdm.restart();">
+                        <i class="fa fa-refresh"></i> Restart
+                    </li>
+                    <li id="action-suspend" onclick="lightdm.suspend();">
+                        <i class="fa fa-power-off fa-rotate-90"></i> Suspend
+                    </li>
+                    <li id="action-hibernate" onclick="lightdm.hibernate();">
+                        <i class="fa fa-power-off"></i> Hibernate
+                    </li>
+                    <li id="action-settings">
+                        <i class="fa fa-cog"></i> Settings
+                    </li>
+                </ul>
             </div>
             <div class="mdl-mini-footer__right-section">
-                <div id="clock" class="action action-clock">00:00:00</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li id="clock">00:00:00</li>
+                </ul>
             </div>
         </footer>
     </div>
