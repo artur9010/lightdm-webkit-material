@@ -28,13 +28,13 @@ if (!('lightdm' in window)) {
     lightdm.layout = lightdm.layouts[0];
     lightdm.sessions = [
         {
-            key: "key0",
+            key: "gnome",
             name: "GNOME",
             comment: "no comment"
         },
         {
-            key: "key1",
-            name: "session 1",
+            key: "kde",
+            name: "KDE",
             comment: "no comment"
         }
     ];
@@ -52,7 +52,7 @@ if (!('lightdm' in window)) {
             name: "clarkk",
             real_name: "Superman",
             display_name: "Clark Kent",
-            image: "http://uk.omg.li/VDXV/1756295270.jpg.x160.jpg",
+            image: "assets/ui/avatar_2x.png",
             language: "en_US",
             layout: null,
             session: null,
@@ -62,21 +62,11 @@ if (!('lightdm' in window)) {
             name: "brucew",
             real_name: "Batman",
             display_name: "Bruce Wayne",
-            image: "http://uk.omg.li/VDHr/OW-blog-Batman.jpg",
-            language: "en_US",
-            layout: null,
-            session: null,
-            logged_in: false
-        },
-        {
-            name: "peterp",
-            real_name:"Spiderman",
-            display_name: "Peter Parker",
             image: "",
             language: "en_US",
             layout: null,
             session: null,
-            logged_in: true
+            logged_in: false
         }
     ];
 
