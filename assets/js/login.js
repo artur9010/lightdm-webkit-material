@@ -56,18 +56,9 @@ var login = (function (lightdm, $) {
     };
     
     var setup_language_list = function(){
-        var $list = $lang;
-        var to_append = null;
-        
         $.each(lightdm.languages, function(i) {
             var lang = lightdm.languages[i];
-            $list.append(
-                '<option value="' +
-                lang.code +
-                '">' +
-                lang.name +
-                '</option>'
-            );
+            $lang.append('<option value="' + lang.code + '">' + lang.name + '</option>');
         });
     };
     
@@ -76,21 +67,12 @@ var login = (function (lightdm, $) {
         
         $.each(lightdm.layouts, function(i) {
             var lang = lightdm.layouts[i];
-            $list.append(
-                '<option value="' +
-                lang.name +
-                '">' +
-                lang.name +
-                '</option>'
-            );
+            $list.append('<option value="' + lang.name + '">' + lang.name + '</option>');
         });
     };
     
-    var find_and_display_user_picture = function (idx) {
-        $('.profile-img').attr(
-            'src',
-            lightdm.users[idx].image
-        );
+    var find_and_display_user_picture = function(idx){
+        $('.profile-img').attr("src", lightdm.users[idx].image);
         
         $('.profile-img').error(function(){
             $('.profile-img').attr("src", "assets/ui/avatar_2x.png");

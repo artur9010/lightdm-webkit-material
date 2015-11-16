@@ -1,13 +1,11 @@
-## A Google/ChromeOS style LightDM Webkit greeter theme
+## A Material design LightDM Webkit greeter theme
 
 This is a theme for LightDM Webkit (`lightdm-webkit-greeter`).
 
-It's designed to be a mix between the usual Google log in screen, and the log in screen that you will find on ChromeOS.
-
 ### Screenshots
 
-![](http://i.imgur.com/Y7dY8K7.jpg)
-![](http://i.imgur.com/JklIV5o.jpg)
+![](http://i.imgur.com/jb6evzm.jpg)
+![](http://i.imgur.com/Dccv7qd.jpg)
 
 ### Features
 
@@ -33,14 +31,14 @@ Instructions will differ for every platform, but I can tell you how to install i
 1. Install and enable `lightdm` and `lightdm-webkit-greeter`
 2. In the terminal, `cd` to `/usr/share/lightdm-webkit/themes/`
 3. Clone this repository
-  - Type `git clone https://github.com/artur9010/lightdm-webkit-google.git`
-  - or, if you want to use devdevelopment version, use `git clone -b dev https://github.com/artur9010/lightdm-webkit-google.git`
+  - Type `git clone https://github.com/artur9010/lightdm-webkit-material.git`
+  - or, if you want to use devdevelopment version, use `git clone -b dev https://github.com/artur9010/lightdm-webkit-material.git`
 4. Enable the theme in your `/etc/lightdm/lightdm-webkit2-greeter.conf`
   - Search for `greeter` section
-  - Set `webkit-theme` to `lightdm-webkit-google`
+  - Set `webkit-theme` to `lightdm-webkit-material`
 
 ### Updating
-1. In the terminal, `cd` to `/usr/share/lightdm-webkit/themes/lightdm-webkit-google/`
+1. In the terminal, `cd` to `/usr/share/lightdm-webkit/themes/lightdm-webkit-material/`
 2. Pull changes from repository, `git pull`
 
 ### Setting your own user picture

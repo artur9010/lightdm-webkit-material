@@ -22,4 +22,4 @@ function startTime(){
     $("#clock").html(hour + ":" + minute + ":" + second);
 }
 
-setInterval(startTime, 500);
+setInterval(startTime, 1000);

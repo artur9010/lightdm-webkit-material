@@ -1,6 +1,6 @@
 [theme]
-name=lightdm-webkit-google
-description=A Google/ChromeOS style greeter theme
+name=lightdm-webkit-material
+description=A Material design greeter theme
 engine=lightdm-webkit-greeter
 url=index.html
 session=gnome
