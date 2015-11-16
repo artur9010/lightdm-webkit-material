@@ -109,6 +109,7 @@ var login = (function (lightdm, $) {
             lightdm.provide_secret(password);
         }
     };
+    
     window.authentication_complete = function () {
         if (lightdm.is_authenticated) {
             show_prompt('Logged in');
