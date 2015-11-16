@@ -33,10 +33,16 @@ var login = (function (lightdm, $) {
         selected_user = lightdm.users[idx].name;
         if(selected_user !== null) {
             window.start_authentication(selected_user);
+            
+            $pass.val(""); //clear the password input
+            $pass.trigger('focus'); //focus the password input
+            
+            if(lightdm.users[idx].logged_in){
+                $session.hide();
+            }else{
+                $session.show();
+            }
         }
-        
-        $pass.val(""); //clear the password input
-        $pass.trigger('focus'); //focus the password input
     };
     
     var setup_sessions_list = function() {

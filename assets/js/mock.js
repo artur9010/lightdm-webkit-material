@@ -66,7 +66,7 @@ if (!('lightdm' in window)) {
             language: "en_US",
             layout: null,
             session: null,
-            logged_in: false
+            logged_in: true
         }
     ];
 
