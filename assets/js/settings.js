@@ -1,31 +1,36 @@
 var settings = (function ($) {
-    var $settings_card = $('.settings-card');
-    var $signin_card = $('.signin-card');
+    var $settings_card = $('#settings');
+    var $signin_card = $('#signin');
+    var animation_time = 500; //in miliseconds
     window.login_settings = window.login_settings || {};
 
     var setup_settings_bind = function () {
-        $('.settings, .settings-card .cancel').on(
+        $('#action-settings, #settings .cancel').on(
             'click',
             function (e) {
                 e.preventDefault();
 
-                if (!$settings_card.is(':visible')) {
+                if(!$settings_card.is(':visible')){
                     show_settings_form();
-                } else {
+                }else{
                     hide_settings_form();
                 }
             }
         );
     };
-    var show_settings_form = function () {
-        $settings_card.show();
-        $signin_card.hide();
-        load_settings_from_localstorage();
+    var show_settings_form = function(){
+        $signin_card.fadeOut(animation_time, function(){
+            $settings_card.fadeIn(animation_time);
+            load_settings_from_localstorage();
+        });
     };
-    var hide_settings_form = function () {
-        $settings_card.hide();
-        $signin_card.show();
+    
+    var hide_settings_form = function(){
+        $settings_card.fadeOut(animation_time, function(){
+            $signin_card.fadeIn(animation_time);
+        });
     };
+    
     var load_settings_from_localstorage = function () {
         var formdata = localStorage.getItem('login_settings');
             formdata = JSON.parse(formdata);
@@ -49,6 +54,7 @@ var settings = (function ($) {
         assign_stored_settings();
         check_stored_settings();
     };
+    
     var assign_stored_settings = function () {
         var stored_setings = JSON.parse(
             localStorage.getItem('login_settings')
@@ -59,20 +65,13 @@ var settings = (function ($) {
             });
         }
     };
+    
     var check_stored_settings = function () {
 
         if (window.login_settings['show_photo'] == 0) {
             $('.profile-img').hide();
         } else {
             $('.profile-img').show();
-        }
-        if(window.login_settings['background']) {
-            $('body').css(
-                'background-image',
-                "url('"+window.login_settings['background']+"')"
-            );
-        }else{
-            $('body').removeAttr('style');
         }
     };
 
