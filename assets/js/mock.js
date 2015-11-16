@@ -36,11 +36,6 @@ if (!('lightdm' in window)) {
             key: "key1",
             name: "session 1",
             comment: "no comment"
-        },
-        {
-            key: "key2",
-            name: "session 2",
-            comment: "no comment"
         }
     ];
 
