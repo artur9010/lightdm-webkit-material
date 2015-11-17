@@ -86,11 +86,15 @@ var login = (function (lightdm, $) {
     };
     
     var find_and_display_user_picture = function(idx){
-        $('.profile-img').attr("src", lightdm.users[idx].image);
-        
-        $('.profile-img').error(function(){
+        if(lightdm.users[idx].image == "" || lightdm.users[idx].image == null){
             $('.profile-img').attr("src", "assets/ui/avatar_2x.png");
-        })
+        }else{
+            $('.profile-img').attr("src", lightdm.users[idx].image);
+        
+            $('.profile-img').error(function(){
+                $('.profile-img').attr("src", "assets/ui/avatar_2x.png");
+            })
+        }
     };
 
     // Functions that lightdm needs
@@ -98,6 +102,7 @@ var login = (function (lightdm, $) {
         lightdm.cancel_timed_login();
         lightdm.start_authentication(username);
     };
+    
     window.provide_secret = function () {
         password = $pass.val() || null;
 
@@ -115,11 +120,13 @@ var login = (function (lightdm, $) {
             );
         }
     };
+    
     // These can be used for user feedback
     window.show_error = function (e) {
         console.log('Error: ' + e);
 
     };
+    
     window.show_prompt = function (e) {
         console.log('Prompt: ' + e);
     };
