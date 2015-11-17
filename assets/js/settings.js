@@ -4,7 +4,7 @@ load_settings();
 function save_settings(){
     localStorage.setItem("settings.language", $("#language").val());
     localStorage.setItem("settings.layout", $("#layout").val());
-    localStorage.setItem("settings.clockStyle", $("#clock_style").val());
+    load_settings();
 }
 
 function load_settings(){
@@ -15,10 +15,10 @@ function load_settings(){
 }
 
 function set_default_settings(){
-    if(localStorage.getItem("settings.language") == null){
+    if(localStorage.getItem("settings.language") == null || localStorage.getItem("settings.language") == ""){
         localStorage.setItem("settings.language", $("#language").val());
     }
-    if(localStorage.getItem("settings.layout") == null){
+    if(localStorage.getItem("settings.layout") == null || localStorage.getItem("settings.layout") == ""){
         localStorage.setItem("settings.layout", "en");
     }
 }

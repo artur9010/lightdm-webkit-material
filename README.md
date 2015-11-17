@@ -4,8 +4,9 @@ This is a theme for LightDM Webkit2 (`lightdm-webkit2-greeter` [Arch Linux users
 
 ### Screenshots
 
-![](http://i.imgur.com/jb6evzm.jpg)
-![](http://i.imgur.com/Dccv7qd.jpg)
+![](http://i.imgur.com/ErJvB4i.jpg)
+![](http://i.imgur.com/GLZUtd2.jpg)
+![](http://i.imgur.com/0bov99y.jpg)
 
 ### Features
 

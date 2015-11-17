@@ -44,12 +44,8 @@ var login = (function (lightdm, $) {
             }
             
             //Set language and layout for user
-            //if(window.login_settings['language'] != null){
-            //    lightdm.users[idx].language = window.login_settings['language'];
-            //}
-            //if(window.login_settings['keyboard_layout'] != null){
-            //    lightdm.users[idx].layout = window.login_settings['layout'];
-            //}
+            lightdm.users[idx].language = settings['language'];
+            lightdm.users[idx].layout = settings['layout'];
         }
     };
     

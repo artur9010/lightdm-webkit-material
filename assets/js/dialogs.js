@@ -31,8 +31,14 @@ function show_login_dialog() {
 }
 
 function show_settings_dialog() {
-    settings_fill_inputs();
     $(".card:visible").fadeOut(animation_time, function(){
+        settings_fill_inputs();
         $("#settings").fadeIn(animation_time);
+    });
+}
+
+function show_help_dialog() {
+    $(".card:visible").fadeOut(animation_time, function(){
+        $("#help-dialog").fadeIn(animation_time);
     });
 }
