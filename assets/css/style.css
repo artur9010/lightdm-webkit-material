@@ -1,3 +1,9 @@
 .mdl-mini-footer{
     padding: 4px 12px;
 }
+
+.select{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
