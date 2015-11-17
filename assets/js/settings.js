@@ -1,6 +1,37 @@
+var settings = {};
+load_settings();
+
+function save_settings(){
+    localStorage.setItem("settings.language", $("#language").val());
+    localStorage.setItem("settings.layout", $("#layout").val());
+    localStorage.setItem("settings.clockStyle", $("#clock_style").val());
+}
+
+function load_settings(){
+    set_default_settings();
+    settings['language'] = localStorage.getItem("settings.language");
+    settings['layout'] = localStorage.getItem("settings.layout");
+    set_default_settings();
+}
+
+function set_default_settings(){
+    if(localStorage.getItem("settings.language") == null){
+        localStorage.setItem("settings.language", $("#language").val());
+    }
+    if(localStorage.getItem("settings.layout") == null){
+        localStorage.setItem("settings.layout", "en");
+    }
+}
+
+function settings_fill_inputs(){
+    $("#language").val(settings['language']);
+    $("#layout").val(settings['layout']);
+}
+
+/*
 var settings = (function ($) {
     var $settings_card = $('#settings');
-    var $signin_card = $('#signin');
+    var $signin_card = $('#login');
     var animation_time = 500; //in miliseconds
     window.login_settings = window.login_settings || {};
 
@@ -10,7 +41,7 @@ var settings = (function ($) {
             function (e) {
                 e.preventDefault();
 
-                if(!$settings_card.is(':visible')){
+                if($settings_card.is(':hidden')){
                     show_settings_form();
                 }else{
                     hide_settings_form();
@@ -84,7 +115,7 @@ var settings = (function ($) {
 
             $settings_card.find('form').on('submit', function(e) {
                 e.preventDefault();
-                save_settings_to_localstorage($(this));
+                save_settings_to_localstorage($settings_card);
                 hide_settings_form();
             });
         });
@@ -96,3 +127,4 @@ var settings = (function ($) {
 } (jQuery));
 
 settings.init();
+*/

@@ -1,11 +1,11 @@
 var login = (function (lightdm, $) {
     var selected_user = null;
-    var password = null
+    var password = null;
     var $user = $('#user');
     var $pass = $('#pass');
     var $session = $('#session');
     var $lang = $("#language");
-    var $keyboard_layout = $("#keyboard_layout");
+    var $keyboard_layout = $("#layout");
 
     // private functions
     var setup_users_list = function () {
@@ -44,28 +44,19 @@ var login = (function (lightdm, $) {
             }
             
             //Set language and layout for user
-            if(window.login_settings['language'] != null){
-                lightdm.users[idx].language = window.login_settings['language'];
-            }
-            if(window.login_settings['keyboard_layout'] != null){
-                lightdm.users[idx].layout = window.login_settings['layout'];
-            }
+            //if(window.login_settings['language'] != null){
+            //    lightdm.users[idx].language = window.login_settings['language'];
+            //}
+            //if(window.login_settings['keyboard_layout'] != null){
+            //    lightdm.users[idx].layout = window.login_settings['layout'];
+            //}
         }
     };
     
     var setup_sessions_list = function() {
-        var $list = $session;
-        var to_append = null;
-        
         $.each(lightdm.sessions, function(i) {
             var session = lightdm.sessions[i];
-            $list.append(
-                '<option value="' +
-                session.key +
-                '">' +
-                session.name +
-                '</option>'
-            );
+            $('#session').append('<option value="' + session.key + '">' + session.name + '</option>');
         });
     };
     

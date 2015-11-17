@@ -1,31 +1,38 @@
 var animation_time = 500;
 
-function show_shutdown_dialog(){
+function show_shutdown_dialog() {
     $(".card:visible").fadeOut(animation_time, function(){
         $("#shutdown-dialog").fadeIn(animation_time);
     });
 }
 
-function show_restart_dialog(){
+function show_restart_dialog() {
     $(".card:visible").fadeOut(animation_time, function(){
         $("#restart-dialog").fadeIn(animation_time);
     });
 }
 
-function show_suspend_dialog(){
+function show_suspend_dialog() {
     $(".card:visible").fadeOut(animation_time, function(){
         $("#suspend-dialog").fadeIn(animation_time);
     });
 }
 
-function show_hibernate_dialog(){
+function show_hibernate_dialog() {
     $(".card:visible").fadeOut(animation_time, function(){
         $("#hibernate-dialog").fadeIn(animation_time);
     });
 }
 
-function show_signin_dialog(){
+function show_login_dialog() {
     $(".card:visible").fadeOut(animation_time, function(){
-        $("#signin").fadeIn(animation_time);
+        $("#login").fadeIn(animation_time);
+    });
+}
+
+function show_settings_dialog() {
+    settings_fill_inputs();
+    $(".card:visible").fadeOut(animation_time, function(){
+        $("#settings").fadeIn(animation_time);
     });
 }
