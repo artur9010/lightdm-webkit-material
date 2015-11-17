@@ -17,13 +17,12 @@ I created this for use on Arch Linux, so it only has the basic features of:
 - Seeing their profile picture
 - Restarting the computer
 - Shutting the computer down
-- Option to hide the profile picture
-- Option to change the background
-- Option to change clock format (12/24h)
-- Option to select session
-- Option to select language
-- Option to select keyboard layout (eq. pl_PL for Polish keyboard)
-- A clock!
+- Suspending the computer
+- Hibernate
+- Select session (GNOME, KDE, Xfce or other installed DE)
+- Select your language
+- Option to select keyboard layout (eq. pl_PL for Polish keyboard, en_US for English)
+- And the most important thing, A CLOCK WITH SECONDS!!!
 
 ### How to install
 
