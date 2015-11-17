@@ -1,11 +1,11 @@
 var login = (function (lightdm, $) {
     var selected_user = null;
-    var password = null
+    var password = null;
     var $user = $('#user');
     var $pass = $('#pass');
     var $session = $('#session');
     var $lang = $("#language");
-    var $keyboard_layout = $("#keyboard_layout");
+    var $keyboard_layout = $("#layout");
 
     // private functions
     var setup_users_list = function () {
@@ -33,25 +33,26 @@ var login = (function (lightdm, $) {
         selected_user = lightdm.users[idx].name;
         if(selected_user !== null) {
             window.start_authentication(selected_user);
+            
+            $pass.val(""); //clear the password input
+            $pass.trigger('focus'); //focus the password input
+            
+            if(lightdm.users[idx].logged_in){
+                $session.hide();
+            }else{
+                $session.show();
+            }
+            
+            //Set language and layout for user
+            lightdm.users[idx].language = settings['language'];
+            lightdm.users[idx].layout = settings['layout'];
         }
-        
-        $pass.val(""); //clear the password input
-        $pass.trigger('focus'); //focus the password input
     };
     
     var setup_sessions_list = function() {
-        var $list = $session;
-        var to_append = null;
-        
         $.each(lightdm.sessions, function(i) {
             var session = lightdm.sessions[i];
-            $list.append(
-                '<option value="' +
-                session.key +
-                '">' +
-                session.name +
-                '</option>'
-            );
+            $('#session').append('<option value="' + session.key + '">' + session.name + '</option>');
         });
     };
     
@@ -72,11 +73,15 @@ var login = (function (lightdm, $) {
     };
     
     var find_and_display_user_picture = function(idx){
-        $('.profile-img').attr("src", lightdm.users[idx].image);
+        if(lightdm.users[idx].image == "" || lightdm.users[idx].image == null){
+            $('.profile-img').attr("src", "assets/ui/avatar.png");
+        }else{
+            $('.profile-img').attr("src", lightdm.users[idx].image);
         
-        $('.profile-img').error(function(){
-            $('.profile-img').attr("src", "assets/ui/avatar_2x.png");
-        })
+            $('.profile-img').error(function(){
+                $('.profile-img').attr("src", "assets/ui/avatar.png");
+            })
+        }
     };
 
     // Functions that lightdm needs
@@ -84,6 +89,7 @@ var login = (function (lightdm, $) {
         lightdm.cancel_timed_login();
         lightdm.start_authentication(username);
     };
+    
     window.provide_secret = function () {
         password = $pass.val() || null;
 
@@ -101,11 +107,13 @@ var login = (function (lightdm, $) {
             );
         }
     };
+    
     // These can be used for user feedback
     window.show_error = function (e) {
         console.log('Error: ' + e);
 
     };
+    
     window.show_prompt = function (e) {
         console.log('Prompt: ' + e);
     };

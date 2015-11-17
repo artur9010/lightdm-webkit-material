@@ -5,12 +5,6 @@ function startTime(){
     var minute = date.getMinutes();
     var second = date.getSeconds();
     
-    if(window.login_settings['clock_style'] == 1){
-        if(hour > 12){
-            hour = hour - 12;
-        }
-    }
-    
     if(minute < 10){
         minute = "0" + minute;
     }

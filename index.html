@@ -3,111 +3,157 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="assets/css/material.min.css">
-    <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 </head>
-<body>
+<body oncontextmenu="return false;">
     <div class="mdl-layout mdl-js-layout">
         <main class="mdl-layout__content" style="flex: 1 0 auto;">
             
-            <div class="card" id="settings" style="display: none;">
-                <form>
-                    <div class="form-group">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <label class="mdl-textfield__label" for="language">Language</label>
-                            <select id="language" class="mdl-textfield__input"></select>
+            <!-- Login card -->
+            <div class="card mdl-shadow--4dp" id="login">
+                <div class="header">Welcome back!</div>
+                <div class="content">
+                    <img class="profile-img" src="assets/ui/avatar.png"/>
+                    <form>
+                        <div class="form-group">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <select id="user" class="mdl-textfield__input select"></select>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="password"  id="pass">
+                                <label class="mdl-textfield__label" for="pass"><i class="fa fa-lock"></i> Password</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <select id="session" class="mdl-textfield__input select"></select>
+                            </div>
+                            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"><i class="fa fa-sign-in"></i> Sign in</button>
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <label class="mdl-textfield__label" for="keyboard_layout">Keyboard layout</label>
-                            <select id="keyboard_layout" class="mdl-textfield__input"></select>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <label class="mdl-textfield__label" for="show_photo">Display the user photo?</label>
-                            <select id="show_photo" class="mdl-textfield__input">
-                                <option value="1">
-                                    Yes
-                                </option>
-                                <option value="0">
-                                    No
-                                </option>
-                            </select>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <label class="mdl-textfield__label" for="clock_style">Clock style</label>
-                            <select id="clock_style" class="mdl-textfield__input">
-                                <option value="0">
-                                    24h
-                                </option>
-                                <option value="1">
-                                    12h
-                                </option>
-                            </select>
-                        </div>
-                        <br/>
-                        <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored cancel">
-                            Cancel
-                        </button>
-                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-                            Save
-                        </button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
-
-
-            <div class="card" id="signin">
-                <img
-                    class="profile-img"
-                    src="assets/ui/avatar_2x.png"
-                />
-                <form>
-                    <div class="form-group">
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <select id="user" class="mdl-textfield__input"></select>
+            
+            <!-- Settings card -->
+            <div class="card mdl-shadow--4dp" id="settings" style="display: none;">
+                <div class="header">Settings</div>
+                <div class="content">
+                    <form>
+                        <div class="form-group">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <label class="mdl-textfield__label" for="language"><i class="fa fa-language"></i> Language</label>
+                                <select id="language" class="mdl-textfield__input"></select>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <label class="mdl-textfield__label" for="layout"><i class="fa fa-keyboard-o"></i> Keyboard layout</label>
+                                <select id="layout" class="mdl-textfield__input"></select>
+                            </div>
+                            <br/>
+                            <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="load_settings(); show_login_dialog();">
+                                <i class="fa fa-ban"></i> Cancel
+                            </button>
+                            <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="save_settings(); show_login_dialog();">
+                                <i class="fa fa-floppy-o"></i> Save
+                            </button>
                         </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input" type="password"  id="pass">
-                            <label class="mdl-textfield__label" for="pass">Password</label>
-                        </div>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <select id="session" class="mdl-textfield__input"></select>
-                        </div>
-                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Sign in</button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
+            
+            <!-- Shutdown dialog -->
+            <div class="card mdl-shadow--4dp" id="shutdown-dialog" style="display: none;">
+                <div class="header">Shutdown</div>
+                <div class="content">
+                    Do you really want to shutdown?<br/><br/>
+                    <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="show_login_dialog();"><i class="fa fa-ban"></i> Cancel</button>
+                    <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="lightdm.shutdown();"><i class="fa fa-power-off"></i> Shutdown</button>
+                </div>
+            </div>
+            
+            <!-- Restart dialog -->
+            <div class="card mdl-shadow--4dp" id="restart-dialog" style="display: none;">
+                <div class="header">Restart</div>
+                <div class="content">
+                    Do you really want to restart?<br/><br/>
+                    <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="show_login_dialog();"><i class="fa fa-ban"></i> Cancel</button>
+                    <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="lightdm.restart();"><i class="fa fa-refresh"></i> Restart</button>
+                </div>
+            </div>
+            
+            <!-- Suspend dialog -->
+            <div class="card mdl-shadow--4dp" id="suspend-dialog" style="display: none;">
+                <div class="header">Suspend</div>
+                <div class="content">
+                    Do you really want to suspend?<br/><br/>
+                    <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="show_login_dialog();"><i class="fa fa-ban"></i> Cancel</button>
+                    <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="lightdm.suspend();"><i class="fa fa-power-off fa-rotate-90"></i> Suspend</button>
+                </div>
+            </div>
+            
+            <!-- Hibernate dialog -->
+            <div class="card mdl-shadow--4dp" id="hibernate-dialog" style="display: none;">
+                <div class="header">Hibernate</div>
+                <div class="content">
+                    Do you really want to hibernate?<br/><br/>
+                    <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="show_login_dialog();"><i class="fa fa-ban"></i> Cancel</button>
+                    <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="lightdm.hibernate();"><i class="fa fa-power-off "></i> Hibernate</button>
+                </div>
+            </div>
+            
+            <!-- Help dialog -->
+            <div class="card mdl-shadow--4dp" id="help-dialog" style="display: none;">
+                <div class="header">Help</div>
+                <div class="content">
+                    <b>I found a bug/mistake? Where can I report it?</b><br/>
+                    <i>https://github.com/artur9010/lightdm-webkit-material/issues</i>
+                    
+                    <br/>
+                    <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="show_login_dialog();">Ok</button>
+                </div>
+            </div>
+            
         </main>
     
+        <!-- Footer -->
         <footer class="mdl-mini-footer">
             <div class="mdl-mini-footer__left-section">
-                <div id="action-shutdown" class="action" onclick="lightdm.shutdown();">
-                    <i class="fa fa-power-off"></i> Shut down
-                </div>
-                <div id="action-reboot" class="action" onclick="lightdm.restart();">
-                    <i class="fa fa-refresh"></i> Restart
-                </div>
-                <div id="action-suspend" class="action" onclick="lightdm.suspend();">
-                    <i class="fa fa-power-off fa-rotate-90"></i> Suspend
-                </div>
-                <div id="action-hibernate" class="action" onclick="lightdm.hibernate();">
-                    <i class="fa fa-power-off"></i> Hibernate
-                </div>
-                <div id="action-settings" class="action">
-                    <i class="fa fa-cog"></i> Settings
-                </div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li id="action-shutdown" onclick="show_shutdown_dialog()">
+                        <i class="fa fa-power-off"></i> Shutdown
+                    </li>
+                    <li id="action-reboot" onclick="show_restart_dialog();">
+                        <i class="fa fa-refresh"></i> Restart
+                    </li>
+                    <li id="action-suspend" onclick="show_suspend_dialog();">
+                        <i class="fa fa-power-off fa-rotate-90"></i> Suspend
+                    </li>
+                    <li id="action-hibernate" onclick="show_hibernate_dialog();">
+                        <i class="fa fa-power-off"></i> Hibernate
+                    </li>
+                    <li id="action-settings" onclick="show_settings_dialog();">
+                        <i class="fa fa-cog"></i> Settings
+                    </li>
+                </ul>
             </div>
             <div class="mdl-mini-footer__right-section">
-                <div id="clock" class="action action-clock">00:00:00</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li id="clock">00:00:00</li>
+                    <li onclick="show_help_dialog();"><i class="fa fa-question-circle"></i></li>
+                </ul>
             </div>
         </footer>
     </div>
     
+    <!-- Required libs -->
     <script src="assets/js/jquery.js"></script>
+    
+    <!-- Login -->
     <script src="assets/js/mock.js"></script>
     <script src="assets/js/clock.js"></script>
     <script src="assets/js/login.js"></script>
     <script src="assets/js/settings.js"></script>
+    <script src="assets/js/dialogs.js"></script>
+    
+    <!-- Material -->
     <script src="assets/js/material.min.js"></script>
     <script src="assets/js/mdl-select.js"></script>
 </body>

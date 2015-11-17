@@ -1,3 +1,43 @@
+html, body {
+    height: 100%; width: 100%; overflow: hidden;
+}
+
+body {
+    background-image: url("../ui/wallpaper.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    -webkit-user-select: none
+}
+
+.card {
+    overflow: hidden;
+    background-color: #ffffff;
+    margin: 125px auto 25px;
+    border-radius: 3px;
+    min-width: 344px;
+    max-width: 344px;
+}
+
+.card .header{
+    width: 100%;
+    height: 30px;
+    background-color: #263238;
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.card .content{
+    padding: 40px;
+}
+
+.profile-img {
+    width: 96px;
+    margin: 0 auto 40px;
+    display: block;
+    border-radius: 100%;
+}
+
 .mdl-mini-footer{
-    padding: 12px 12px;
+    padding: 4px 10px;
 }

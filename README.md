@@ -1,11 +1,12 @@
-## A Material design LightDM Webkit greeter theme
+## A Material design LightDM Webkit2 greeter theme
 
-This is a theme for LightDM Webkit (`lightdm-webkit-greeter`).
+This is a theme for LightDM Webkit2 (`lightdm-webkit2-greeter` [Arch Linux users: the package is in AUR]).
 
 ### Screenshots
 
-![](http://i.imgur.com/jb6evzm.jpg)
-![](http://i.imgur.com/Dccv7qd.jpg)
+![](http://i.imgur.com/ErJvB4i.jpg)
+![](http://i.imgur.com/GLZUtd2.jpg)
+![](http://i.imgur.com/0bov99y.jpg)
 
 ### Features
 
@@ -28,7 +29,7 @@ I created this for use on Arch Linux, so it only has the basic features of:
 
 Instructions will differ for every platform, but I can tell you how to install it on Arch Linux:
 
-1. Install and enable `lightdm` and `lightdm-webkit-greeter`
+1. Install and enable `lightdm` and `lightdm-webkit2-greeter`
 2. In the terminal, `cd` to `/usr/share/lightdm-webkit/themes/`
 3. Clone this repository
   - Type `git clone https://github.com/artur9010/lightdm-webkit-material.git`
@@ -53,4 +54,5 @@ or
 
 
 ### License
-This work is free. You can redistribute it and/or modify it under the terms of the WTFPL (Do What The Fuck You Want To Public License), Version 2, as published by Sam Hocevar. See http://www.wtfpl.net/ for more details..
+This work is free. You can redistribute it and/or modify it under the terms of the WTFPL (Do What The Fuck You Want To Public License), Version 2, as published by Sam Hocevar. See http://www.wtfpl.net/ for more details..<br>
+Default avatar: http://www.designshock.com/flat_character/
