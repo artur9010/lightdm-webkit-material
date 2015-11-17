@@ -1,6 +1,6 @@
 ## A Material design LightDM Webkit greeter theme
 
-This is a theme for LightDM Webkit (`lightdm-webkit-greeter`).
+This is a theme for LightDM Webkit (`lightdm-webkit2-greeter` [Arch Linux users: the package is in AUR]).
 
 ### Screenshots
 
@@ -28,7 +28,7 @@ I created this for use on Arch Linux, so it only has the basic features of:
 
 Instructions will differ for every platform, but I can tell you how to install it on Arch Linux:
 
-1. Install and enable `lightdm` and `lightdm-webkit-greeter`
+1. Install and enable `lightdm` and `lightdm-webkit2-greeter`
 2. In the terminal, `cd` to `/usr/share/lightdm-webkit/themes/`
 3. Clone this repository
   - Type `git clone https://github.com/artur9010/lightdm-webkit-material.git`
