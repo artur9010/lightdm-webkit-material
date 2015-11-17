@@ -52,7 +52,7 @@ if (!('lightdm' in window)) {
             name: "clarkk",
             real_name: "Superman",
             display_name: "Clark Kent",
-            image: "assets/ui/avatar_2x.png",
+            image: "assets/ui/avatar.png",
             language: "en_US",
             layout: null,
             session: null,

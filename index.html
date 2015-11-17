@@ -12,7 +12,7 @@
         <main class="mdl-layout__content" style="flex: 1 0 auto;">
             
             <!-- Settings card -->
-            <div class="card mdl-shadow--3dp" id="settings" style="display: none;">
+            <div class="card mdl-shadow--4dp" id="settings" style="display: none;">
                 <form>
                     <div class="form-group">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -58,10 +58,10 @@
 
 
             <!-- SignIn card -->
-            <div class="card mdl-shadow--3dp" id="signin">
+            <div class="card mdl-shadow--4dp" id="signin">
                 <img
                     class="profile-img"
-                    src="assets/ui/avatar_2x.png"
+                    src="assets/ui/avatar.png"
                 />
                 <form>
                     <div class="form-group">
@@ -74,10 +74,43 @@
                         </div>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                             <select id="session" class="mdl-textfield__input select"></select>
+                            <label class="mdl-textfield__label" for="session">Session</label>
                         </div>
                         <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Sign in</button>
                     </div>
                 </form>
+            </div>
+            
+            <!-- Shutdown dialog -->
+            <div class="card mdl-shadow--4dp" id="shutdown-dialog" style="display: none;">
+                <b>Shut down</b><br/>
+                Do you really want to shut down?<br/><br/>
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="show_signin_dialog();"><i class="fa fa-ban"></i> Cancel</button>
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="lightdm.shutdown();"><i class="fa fa-power-off"></i> Shut down</button>
+            </div>
+            
+            <!-- Restart dialog -->
+            <div class="card mdl-shadow--4dp" id="restart-dialog" style="display: none;">
+                <b>Restart</b><br/>
+                Do you really want to restart?<br/><br/>
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="show_signin_dialog();"><i class="fa fa-ban"></i> Cancel</button>
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="lightdm.restart();"><i class="fa fa-refresh"></i> Restart</button>
+            </div>
+            
+            <!-- Suspend dialog -->
+            <div class="card mdl-shadow--4dp" id="suspend-dialog" style="display: none;">
+                <b>Suspend</b><br/>
+                Do you really want to suspend?<br/><br/>
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="show_signin_dialog();"><i class="fa fa-ban"></i> Cancel</button>
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="lightdm.suspend();"><i class="fa fa-power-off fa-rotate-90"></i> Suspend</button>
+            </div>
+            
+            <!-- Hibernate dialog -->
+            <div class="card mdl-shadow--4dp" id="hibernate-dialog" style="display: none;">
+                <b>Hibernate</b><br/>
+                Do you really want to hibernate?<br/><br/>
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="show_signin_dialog();"><i class="fa fa-ban"></i> Cancel</button>
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="lightdm.hibernate();"><i class="fa fa-power-off "></i> Hibernate</button>
             </div>
             
         </main>
@@ -86,16 +119,16 @@
         <footer class="mdl-mini-footer">
             <div class="mdl-mini-footer__left-section">
                 <ul class="mdl-mini-footer__link-list">
-                    <li id="action-shutdown" onclick="lightdm.shutdown();">
+                    <li id="action-shutdown" onclick="show_shutdown_dialog()">
                         <i class="fa fa-power-off"></i> Shut down
                     </li>
-                    <li id="action-reboot" onclick="lightdm.restart();">
+                    <li id="action-reboot" onclick="show_restart_dialog();">
                         <i class="fa fa-refresh"></i> Restart
                     </li>
-                    <li id="action-suspend" onclick="lightdm.suspend();">
+                    <li id="action-suspend" onclick="show_suspend_dialog();">
                         <i class="fa fa-power-off fa-rotate-90"></i> Suspend
                     </li>
-                    <li id="action-hibernate" onclick="lightdm.hibernate();">
+                    <li id="action-hibernate" onclick="show_hibernate_dialog();">
                         <i class="fa fa-power-off"></i> Hibernate
                     </li>
                     <li id="action-settings">
@@ -119,6 +152,7 @@
     <script src="assets/js/clock.js"></script>
     <script src="assets/js/login.js"></script>
     <script src="assets/js/settings.js"></script>
+    <script src="assets/js/dialogs.js"></script>
     
     <!-- Material -->
     <script src="assets/js/material.min.js"></script>

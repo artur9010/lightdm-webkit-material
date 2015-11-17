@@ -1,6 +1,6 @@
-## A Material design LightDM Webkit greeter theme
+## A Material design LightDM Webkit2 greeter theme
 
-This is a theme for LightDM Webkit (`lightdm-webkit2-greeter` [Arch Linux users: the package is in AUR]).
+This is a theme for LightDM Webkit2 (`lightdm-webkit2-greeter` [Arch Linux users: the package is in AUR]).
 
 ### Screenshots
 
@@ -53,4 +53,5 @@ or
 
 
 ### License
-This work is free. You can redistribute it and/or modify it under the terms of the WTFPL (Do What The Fuck You Want To Public License), Version 2, as published by Sam Hocevar. See http://www.wtfpl.net/ for more details..
+This work is free. You can redistribute it and/or modify it under the terms of the WTFPL (Do What The Fuck You Want To Public License), Version 2, as published by Sam Hocevar. See http://www.wtfpl.net/ for more details..<br>
+Default avatar: http://www.designshock.com/flat_character/

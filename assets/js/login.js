@@ -87,12 +87,12 @@ var login = (function (lightdm, $) {
     
     var find_and_display_user_picture = function(idx){
         if(lightdm.users[idx].image == "" || lightdm.users[idx].image == null){
-            $('.profile-img').attr("src", "assets/ui/avatar_2x.png");
+            $('.profile-img').attr("src", "assets/ui/avatar.png");
         }else{
             $('.profile-img').attr("src", lightdm.users[idx].image);
         
             $('.profile-img').error(function(){
-                $('.profile-img').attr("src", "assets/ui/avatar_2x.png");
+                $('.profile-img').attr("src", "assets/ui/avatar.png");
             })
         }
     };
