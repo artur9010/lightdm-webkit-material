@@ -26,7 +26,6 @@ function load_settings(){
         }
     }else{
         $("body").css("background-image", "url(\"assets/ui/background/background-" + settings['background'] + ".jpg\")");
-        $("#settings-backgroundPath").val("");
     }
 }
 
