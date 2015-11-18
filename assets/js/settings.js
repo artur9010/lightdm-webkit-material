@@ -4,6 +4,7 @@ load_settings();
 function save_settings(){
     localStorage.setItem("settings.language", $("#language").val());
     localStorage.setItem("settings.layout", $("#layout").val());
+    localStorage.setItem("settings.background", $("#background").val());
     load_settings();
 }
 
@@ -11,7 +12,11 @@ function load_settings(){
     set_default_settings();
     settings['language'] = localStorage.getItem("settings.language");
     settings['layout'] = localStorage.getItem("settings.layout");
+    settings['background'] = localStorage.getItem("settings.background");
     set_default_settings();
+    
+    //Update background
+    $("body").css("background-image", "url(\"assets/ui/background-" + settings['background'] + ".jpg\")");
 }
 
 function set_default_settings(){
@@ -21,11 +26,15 @@ function set_default_settings(){
     if(localStorage.getItem("settings.layout") == null || localStorage.getItem("settings.layout") == ""){
         localStorage.setItem("settings.layout", "en");
     }
+    if(localStorage.getItem("settings.background") == null){
+        localStorage.setItem("settings.background", "blue");
+    }
 }
 
 function settings_fill_inputs(){
     $("#language").val(settings['language']);
     $("#layout").val(settings['layout']);
+    $("#background").val(settings['background']);
 }
 
 /*

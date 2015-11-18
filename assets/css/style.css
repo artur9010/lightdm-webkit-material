@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-    background-image: url("../ui/wallpaper.jpg");
+    background-image: url("../ui/background-blue.jpg");
     background-size: cover;
     background-attachment: fixed;
     -webkit-user-select: none

@@ -9,16 +9,8 @@ var login = (function (lightdm, $) {
 
     // private functions
     var setup_users_list = function () {
-        var $list = $user;
-        var to_append = null;
         $.each(lightdm.users, function (i) {
-            $list.append(
-                '<option value="' +
-                lightdm.users[i].name +
-                '">' +
-                lightdm.users[i].display_name +
-                '</option>'
-            );
+            $user.append('<option value="' + lightdm.users[i].name + '">' +lightdm.users[i].display_name + '</option>');
         });
     };
     var select_user_from_list = function (idx) {
