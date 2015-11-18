@@ -2,23 +2,16 @@ var login = (function (lightdm, $) {
     var selected_user = null;
     var password = null;
     var $user = $('#user');
-    var $pass = $('#pass');
     var $session = $('#session');
+    var $pass = $('#pass');
     var $lang = $("#language");
-    var $keyboard_layout = $("#layout");
+    var $layout = $("#layout");
+    var inSubmit = false;
 
     // private functions
     var setup_users_list = function () {
-        var $list = $user;
-        var to_append = null;
-        $.each(lightdm.users, function (i) {
-            $list.append(
-                '<option value="' +
-                lightdm.users[i].name +
-                '">' +
-                lightdm.users[i].display_name +
-                '</option>'
-            );
+        $.each(lightdm.users, function (i, user) {
+            $user.append('<option value="' + user.name + '">' + user.display_name + '</option>');
         });
     };
     var select_user_from_list = function (idx) {
@@ -26,16 +19,12 @@ var login = (function (lightdm, $) {
 
         find_and_display_user_picture(idx);
 
-        if(lightdm._username){
-            lightdm.cancel_authentication();
-        }
+	lightdm.cancel_authentication();
 
         selected_user = lightdm.users[idx].name;
         if(selected_user !== null) {
+	   
             window.start_authentication(selected_user);
-            
-            $pass.val(""); //clear the password input
-            $pass.trigger('focus'); //focus the password input
             
             if(lightdm.users[idx].logged_in){
                 $session.hide();
@@ -50,25 +39,20 @@ var login = (function (lightdm, $) {
     };
     
     var setup_sessions_list = function() {
-        $.each(lightdm.sessions, function(i) {
-            var session = lightdm.sessions[i];
-            $('#session').append('<option value="' + session.key + '">' + session.name + '</option>');
+        $.each(lightdm.sessions, function(i, session) {
+            $session.append('<option value="' + session.key + '">' + session.name + '</option>');
         });
     };
     
     var setup_language_list = function(){
-        $.each(lightdm.languages, function(i) {
-            var lang = lightdm.languages[i];
+        $.each(lightdm.languages, function(i, lang) {
             $lang.append('<option value="' + lang.code + '">' + lang.name + '</option>');
         });
     };
     
     var setup_layout_list = function(){
-        var $list = $keyboard_layout;
-        
-        $.each(lightdm.layouts, function(i) {
-            var lang = lightdm.layouts[i];
-            $list.append('<option value="' + lang.name + '">' + lang.name + '</option>');
+        $.each(lightdm.layouts, function(i, layout) {
+            $layout.append('<option value="' + layout.name + '">' + layout.name + '</option>');
         });
     };
     
@@ -91,31 +75,26 @@ var login = (function (lightdm, $) {
     };
     
     window.provide_secret = function () {
-        password = $pass.val() || null;
-
-        if(password !== null) {
-            lightdm.provide_secret(password);
-        }
+        lightdm.provide_secret($pass.val());
     };
     
     window.authentication_complete = function () {
-        if (lightdm.is_authenticated) {
-            show_prompt('Logged in');
-            lightdm.login(
-                lightdm.authentication_user,
-                $session.val()
-            );
+        if (inSubmit && lightdm.is_authenticated) {
+            lightdm.login(lightdm.authentication_user, $session.val());
         }
+	else {
+	    inSubmit = false;
+	}
     };
     
     // These can be used for user feedback
     window.show_error = function (e) {
         console.log('Error: ' + e);
-
     };
     
     window.show_prompt = function (e) {
-        console.log('Prompt: ' + e);
+        $pass.val(""); //clear the password input
+        $pass.focus(); //focus the password input
     };
 
     // exposed outside of the closure
@@ -149,8 +128,9 @@ var login = (function (lightdm, $) {
             });
 
             $('form').on('submit', function (e) {
-                e.preventDefault();
+		inSubmit = true;
                 window.provide_secret();
+                e.preventDefault();
             });
         });
     };
