@@ -26,7 +26,7 @@ I created this for use on Arch Linux, so it only has the basic features of:
 
 ### How to install
 
-Instructions will differ for every platform, but I can tell you how to install it on Arch Linux:
+Instructions will differ for every platform:
 
 1. Install and enable `lightdm` and `lightdm-webkit2-greeter`
 2. In the terminal, `cd` to `/usr/share/lightdm-webkit/themes/`
@@ -36,10 +36,22 @@ Instructions will differ for every platform, but I can tell you how to install i
 4. Enable the theme in your `/etc/lightdm/lightdm-webkit2-greeter.conf`
   - Search for `greeter` section
   - Set `webkit-theme` to `lightdm-webkit-material`
+  
+### How to install (Arch Linux users)
+I can tell you how to install it on Arch Linux:
+
+1. Download from AUR `lightdm-webkit-material-git`
+2. Enable the theme in your `/etc/lightdm/lightdm-webkit2-greeter.conf`
+  - Search for `greeter` section
+  - Set `webkit-theme` to `lightdm-webkit-material`
 
 ### Updating
 1. In the terminal, `cd` to `/usr/share/lightdm-webkit/themes/lightdm-webkit-material/`
 2. Pull changes from repository, `git pull`
+
+### Updating (Arch Linux users)
+If you installed theme using AUR.
+- Yaourt: `yaourt -Syua`
 
 ### Setting your own user picture
 
