@@ -1,6 +1,8 @@
 ## A Material design LightDM Webkit2 greeter theme
 
-This is a theme for LightDM Webkit2 (`lightdm-webkit2-greeter` [Arch Linux users: the package is in AUR]).
+This is a theme for LightDM Webkit2 (`lightdm-webkit2-greeter`).
+
+Arch Linux users can find it in the AUR: [`lightdm-webkit-theme-material-git`](https://aur.archlinux.org/packages/lightdm-webkit-theme-material-git/).
 
 ### Screenshots
 
