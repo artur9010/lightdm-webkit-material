@@ -47,6 +47,19 @@
                                 <label class="mdl-textfield__label" for="layout"><i class="fa fa-keyboard-o"></i> Keyboard layout</label>
                                 <select id="layout" class="mdl-textfield__input"></select>
                             </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <label class="mdl-textfield__label" for="background"><i class="fa fa-desktop"></i> Background color</label>
+                                <select id="background" class="mdl-textfield__input">
+                                    <option value="blue">Blue (default)</option>
+                                    <option value="green">Green</option>
+                                    <option value="red">Red</option>
+                                    <option value="yellow">Yellow</option>
+                                    <option value="purple">Purple</option>
+                                    <option value="teal">Teal</option>
+                                    <option value="gold">Gold</option>
+                                    <option value="grey">Grey</option>
+                                </select>
+                            </div>
                             <br/>
                             <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="load_settings(); show_login_dialog();">
                                 <i class="fa fa-ban"></i> Cancel
@@ -106,8 +119,10 @@
                     <b>I found a bug/mistake? Where can I report it?</b><br/>
                     <i>https://github.com/artur9010/lightdm-webkit-material/issues</i>
                     
-                    <br/>
+                    <br/><br/>
                     <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="show_login_dialog();">Ok</button>
+                    <br/><br/>
+                    Crafted with <i class="fa fa-heart"></i> in Poland.
                 </div>
             </div>
             
