@@ -40,24 +40,37 @@
                     <form>
                         <div class="form-group">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <label class="mdl-textfield__label" for="language"><i class="fa fa-language"></i> Language</label>
-                                <select id="language" class="mdl-textfield__input"></select>
+                                <label class="mdl-textfield__label" for="settings-language"><i class="fa fa-language"></i> Language</label>
+                                <select id="settings-language" class="mdl-textfield__input"></select>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <label class="mdl-textfield__label" for="layout"><i class="fa fa-keyboard-o"></i> Keyboard layout</label>
-                                <select id="layout" class="mdl-textfield__input"></select>
+                                <label class="mdl-textfield__label" for="settings-background"><i class="fa fa-desktop"></i> Background</label>
+                                <select id="settings-background" class="mdl-textfield__input">
+                                    <optgroup label="Predefined">
+                                        <option value="blue">Blue (default)</option>
+                                        <option value="green">Green</option>
+                                        <option value="red">Red</option>
+                                        <option value="yellow">Yellow</option>
+                                        <option value="purple">Purple</option>
+                                        <option value="teal">Teal</option>
+                                        <option value="pink">Pink</option>
+                                        <option value="gold">Gold</option>
+                                        <option value="grey">Grey</option>
+                                    </optgroup>
+                                    <optgroup label="Other">
+                                        <option value="custom">Custom background</option>
+                                    </optgroup>
+                                </select>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <label class="mdl-textfield__label" for="background"><i class="fa fa-desktop"></i> Background color</label>
-                                <select id="background" class="mdl-textfield__input">
-                                    <option value="blue">Blue (default)</option>
-                                    <option value="green">Green</option>
-                                    <option value="red">Red</option>
-                                    <option value="yellow">Yellow</option>
-                                    <option value="purple">Purple</option>
-                                    <option value="teal">Teal</option>
-                                    <option value="gold">Gold</option>
-                                    <option value="grey">Grey</option>
+                                <input class="mdl-textfield__input" type="text" id="settings-backgroundPath">
+                                <label class="mdl-textfield__label" for="settings-backgroundPath"><i class="fa fa-desktop"></i> Path to background (if custom)</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <label class="mdl-textfield__label" for="settings-clockStyle"><i class="fa fa-clock-o"></i> Use 12-hour clock</label>
+                                <select id="settings-clockStyle" class="mdl-textfield__input">
+                                    <option value="0">No (default)</option>
+                                    <option value="1">Yes</option>
                                 </select>
                             </div>
                             <br/>

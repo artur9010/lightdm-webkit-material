@@ -45,7 +45,7 @@ I can tell you how to install it on Arch Linux:
 1. Download from AUR `lightdm-webkit-material-git`
 2. Enable the theme in your `/etc/lightdm/lightdm-webkit2-greeter.conf`
   - Search for `greeter` section
-  - Set `webkit-theme` to `lightdm-webkit-material`
+  - Set `webkit-theme` to `material`
 
 ### Updating
 1. In the terminal, `cd` to `/usr/share/lightdm-webkit/themes/lightdm-webkit-material/`

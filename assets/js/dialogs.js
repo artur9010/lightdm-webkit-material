@@ -1,4 +1,4 @@
-var animation_time = 500;
+var animation_time = 300;
 
 function show_shutdown_dialog() {
     $(".card:visible").fadeOut(animation_time, function(){
