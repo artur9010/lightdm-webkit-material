@@ -27,7 +27,7 @@ function set_default_settings(){
         localStorage.setItem("settings.language", $("#settings-language").val());
     }
     if(localStorage.getItem("settings.background") == null || !localStorage.getItem("settings.background")){
-        localStorage.setItem("settings.background", "blue");
+        localStorage.setItem("settings.background", "random");
     }
     if(localStorage.getItem("settings.clockStyle") == null || localStorage.getItem("settings.clockStyle") == "" || !localStorage.getItem("settings.clockStyle")){
         localStorage.setItem("settings.clockStyle", "0");
