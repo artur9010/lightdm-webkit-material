@@ -4,21 +4,12 @@ var login = (function (lightdm, $) {
     var $user = $('#user');
     var $pass = $('#pass');
     var $session = $('#session');
-    var $lang = $("#language");
-    var $keyboard_layout = $("#layout");
+    var $lang = $("#settings-language");
 
     // private functions
     var setup_users_list = function () {
-        var $list = $user;
-        var to_append = null;
         $.each(lightdm.users, function (i) {
-            $list.append(
-                '<option value="' +
-                lightdm.users[i].name +
-                '">' +
-                lightdm.users[i].display_name +
-                '</option>'
-            );
+            $user.append('<option value="' + lightdm.users[i].name + '">' +lightdm.users[i].display_name + '</option>');
         });
     };
     var select_user_from_list = function (idx) {
@@ -45,7 +36,6 @@ var login = (function (lightdm, $) {
             
             //Set language and layout for user
             lightdm.users[idx].language = settings['language'];
-            lightdm.users[idx].layout = settings['layout'];
         }
     };
     
@@ -60,15 +50,6 @@ var login = (function (lightdm, $) {
         $.each(lightdm.languages, function(i) {
             var lang = lightdm.languages[i];
             $lang.append('<option value="' + lang.code + '">' + lang.name + '</option>');
-        });
-    };
-    
-    var setup_layout_list = function(){
-        var $list = $keyboard_layout;
-        
-        $.each(lightdm.layouts, function(i) {
-            var lang = lightdm.layouts[i];
-            $list.append('<option value="' + lang.name + '">' + lang.name + '</option>');
         });
     };
     
@@ -126,7 +107,6 @@ var login = (function (lightdm, $) {
             select_user_from_list();
             setup_sessions_list();
             setup_language_list();
-            setup_layout_list();
             
             // Hide usunsed/blocked/disabled options
             if(!lightdm.can_restart){

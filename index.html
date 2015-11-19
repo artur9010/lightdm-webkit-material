@@ -40,12 +40,33 @@
                     <form>
                         <div class="form-group">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <label class="mdl-textfield__label" for="language"><i class="fa fa-language"></i> Language</label>
-                                <select id="language" class="mdl-textfield__input"></select>
+                                <label class="mdl-textfield__label" for="settings-language"><i class="fa fa-language"></i> Language</label>
+                                <select id="settings-language" class="mdl-textfield__input"></select>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <label class="mdl-textfield__label" for="layout"><i class="fa fa-keyboard-o"></i> Keyboard layout</label>
-                                <select id="layout" class="mdl-textfield__input"></select>
+                                <label class="mdl-textfield__label" for="settings-background"><i class="fa fa-desktop"></i> Background color sheme</label>
+                                <select id="settings-background" class="mdl-textfield__input">
+                                    <option value="random">Random (default)</option>
+                                    <optgroup label="One-color">
+                                        <option value="Blues">Blue</option>
+                                        <option value="Purples">Purple</option>
+                                        <option value="Oranges">Orange</option>
+                                        <option value="Reds">Red</option>
+                                    </optgroup>
+                                    <optgroup label="Multiple colours">
+                                        <option value="YlOrRd">Yellow-Orange-Red</option>
+                                        <option value="YlGnBu">Yellow-Green-Blue</option>
+                                        <option value="PuOr">Purple-Orange</option>
+                                        <option value="YlOrBr">Yellow-Orange-Brown</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <label class="mdl-textfield__label" for="settings-clockStyle"><i class="fa fa-clock-o"></i> Use 12-hour clock</label>
+                                <select id="settings-clockStyle" class="mdl-textfield__input">
+                                    <option value="0">No (default)</option>
+                                    <option value="1">Yes</option>
+                                </select>
                             </div>
                             <br/>
                             <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="load_settings(); show_login_dialog();">
@@ -106,8 +127,10 @@
                     <b>I found a bug/mistake? Where can I report it?</b><br/>
                     <i>https://github.com/artur9010/lightdm-webkit-material/issues</i>
                     
-                    <br/>
+                    <br/><br/>
                     <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="show_login_dialog();">Ok</button>
+                    <br/><br/>
+                    Crafted with <i class="fa fa-heart"></i> in Poland.
                 </div>
             </div>
             
@@ -145,6 +168,7 @@
     
     <!-- Required libs -->
     <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/trianglify.min.js"></script>
     
     <!-- Login -->
     <script src="assets/js/mock.js"></script>
