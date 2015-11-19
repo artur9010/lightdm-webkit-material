@@ -6,9 +6,9 @@ Arch Linux users can find it in the AUR: [`lightdm-webkit-theme-material-git`](h
 
 ### Screenshots
 
-![](http://i.imgur.com/ErJvB4i.jpg)
-![](http://i.imgur.com/GLZUtd2.jpg)
-![](http://i.imgur.com/0bov99y.jpg)
+![](http://i.imgur.com/ztW6raQ.jpg)
+![](http://i.imgur.com/yUcRxMu.jpg)
+![](http://i.imgur.com/C887U4R.jpg)
 
 ### Features
 

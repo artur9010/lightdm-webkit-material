@@ -44,28 +44,22 @@
                                 <select id="settings-language" class="mdl-textfield__input"></select>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <label class="mdl-textfield__label" for="settings-background"><i class="fa fa-desktop"></i> Background</label>
+                                <label class="mdl-textfield__label" for="settings-background"><i class="fa fa-desktop"></i> Background color sheme</label>
                                 <select id="settings-background" class="mdl-textfield__input">
-                                    <optgroup label="Polygon">
-                                        <option value="blue">Blue (default)</option>
-                                        <option value="green">Green</option>
-                                        <option value="red">Red</option>
-                                        <option value="yellow">Yellow</option>
-                                        <option value="purple">Purple</option>
-                                        <option value="teal">Teal</option>
-                                        <option value="pink">Pink</option>
-                                        <option value="gold">Gold</option>
-                                        <option value="grey">Grey</option>
+                                    <option value="random">Random (default)</option>
+                                    <optgroup label="One-color">
+                                        <option value="Blues">Blue</option>
+                                        <option value="Purples">Purple</option>
+                                        <option value="Oranges">Orange</option>
+                                        <option value="Reds">Red</option>
                                     </optgroup>
-                                    <optgroup label="Other">
-                                        <option value="custom">Custom background</option>
-                                        <option value="triangles">Colorful triangles</option>
+                                    <optgroup label="Multiple colours">
+                                        <option value="YlOrRd">Yellow-Orange-Red</option>
+                                        <option value="YlGnBu">Yellow-Green-Blue</option>
+                                        <option value="PuOr">Purple-Orange</option>
+                                        <option value="YlOrBr">Yellow-Orange-Brown</option>
                                     </optgroup>
                                 </select>
-                            </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="text" id="settings-backgroundPath">
-                                <label class="mdl-textfield__label" for="settings-backgroundPath"><i class="fa fa-desktop"></i> Path to background (if custom)</label>
                             </div>
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <label class="mdl-textfield__label" for="settings-clockStyle"><i class="fa fa-clock-o"></i> Use 12-hour clock</label>
@@ -174,6 +168,7 @@
     
     <!-- Required libs -->
     <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/trianglify.min.js"></script>
     
     <!-- Login -->
     <script src="assets/js/mock.js"></script>
