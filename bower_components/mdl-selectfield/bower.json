@@ -1,0 +1,34 @@
+{
+  "name": "mdl-selectfield",
+  "version": "0.0.4",
+  "description": "mdl-selectfield for material-design-lite",
+  "main": [
+    "mdl-selectfield.min.css",
+    "mdl-selectfield.min.js"
+  ],
+  "authors": [
+    "Zapozdaev Anton <azapozdaev@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "material",
+    "design",
+    "styleguide",
+    "style",
+    "guide",
+    "mdl",
+    "select"
+  ],
+  "homepage": "https://github.com/MEYVN-digital/mdl-selectfield",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "material-design-lite": "~1.0.5"
+  }
+}
