@@ -121,39 +121,25 @@
                 </div>
             </div>
             
-            <!-- Help dialog -->
-            <div class="card mdl-shadow--4dp" id="help-dialog" style="display: none;">
-                <div class="header">Help</div>
-                <div class="content">
-                    <b>I found a bug/mistake? Where can I report it?</b><br/>
-                    <i>https://github.com/artur9010/lightdm-webkit-material/issues</i>
-                    
-                    <br/><br/>
-                    <button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onclick="show_login_dialog();">Ok</button>
-                    <br/><br/>
-                    Crafted with <i class="fa fa-heart"></i> in Poland.
-                </div>
-            </div>
-            
         </main>
     
         <!-- Footer -->
         <footer class="mdl-mini-footer">
             <div class="mdl-mini-footer__left-section">
                 <ul class="mdl-mini-footer__link-list">
-                    <li id="action-shutdown" onclick="show_shutdown_dialog()">
+                    <li id="action-shutdown">
                         <i class="fa fa-power-off"></i> Shutdown
                     </li>
-                    <li id="action-reboot" onclick="show_restart_dialog();">
+                    <li id="action-reboot">
                         <i class="fa fa-refresh"></i> Restart
                     </li>
-                    <li id="action-suspend" onclick="show_suspend_dialog();">
+                    <li id="action-suspend">
                         <i class="fa fa-power-off fa-rotate-90"></i> Suspend
                     </li>
-                    <li id="action-hibernate" onclick="show_hibernate_dialog();">
+                    <li id="action-hibernate">
                         <i class="fa fa-power-off"></i> Hibernate
                     </li>
-                    <li id="action-settings" onclick="show_settings_dialog();">
+                    <li id="action-settings">
                         <i class="fa fa-cog"></i> Settings
                     </li>
                 </ul>
@@ -161,7 +147,6 @@
             <div class="mdl-mini-footer__right-section">
                 <ul class="mdl-mini-footer__link-list">
                     <li id="clock">00:00:00</li>
-                    <li onclick="show_help_dialog();"><i class="fa fa-question-circle"></i></li>
                 </ul>
             </div>
         </footer>
