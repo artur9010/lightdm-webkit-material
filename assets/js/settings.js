@@ -8,7 +8,7 @@ function save_settings(){
     load_settings();
 }
 
-function load_settings(change_wallpaper){
+function load_settings(load_background){
     set_default_settings();
     settings['language'] = localStorage.getItem("settings.language");
     settings['background'] = localStorage.getItem("settings.background");
@@ -16,7 +16,7 @@ function load_settings(change_wallpaper){
     set_default_settings();
     
     //Update background
-    if(change_wallpaper){
+    if(load_background){
         var backgroundHeight = Math.max($(document).height(), $(window).height()) * 0.889;
         var backgroundWidth = Math.max($(document).width(), $(window).width()) * 0.889;
         var backgroundPattern = Trianglify({cell_size: 50, x_colors: settings['background'], height: backgroundHeight, width: backgroundWidth, variance: "1"});
