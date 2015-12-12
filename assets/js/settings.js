@@ -1,5 +1,5 @@
 var settings = {};
-load_settings();
+load_settings(true);
 //settings-backgroundPath
 function save_settings(){
     localStorage.setItem("settings.language", $("#settings-language").val());
@@ -8,7 +8,7 @@ function save_settings(){
     load_settings();
 }
 
-function load_settings(){
+function load_settings(change_wallpaper){
     set_default_settings();
     settings['language'] = localStorage.getItem("settings.language");
     settings['background'] = localStorage.getItem("settings.background");
@@ -16,10 +16,12 @@ function load_settings(){
     set_default_settings();
     
     //Update background
-    var backgroundHeight = Math.max($(document).height(), $(window).height()) * 0.89;
-    var backgroundWidth = Math.max($(document).width(), $(window).width()) * 0.89;
-    var backgroundPattern = Trianglify({cell_size: 50, x_colors: settings['background'], height: backgroundHeight, width: backgroundWidth, variance: "1"});
-    $("body").css("background-image", "url(\"" + backgroundPattern.png() + "\")");
+    if(change_wallpaper){
+        var backgroundHeight = Math.max($(document).height(), $(window).height()) * 0.889;
+        var backgroundWidth = Math.max($(document).width(), $(window).width()) * 0.889;
+        var backgroundPattern = Trianglify({cell_size: 50, x_colors: settings['background'], height: backgroundHeight, width: backgroundWidth, variance: "1"});
+        $("body").css("background-image", "url(\"" + backgroundPattern.png() + "\")");
+    }
 }
 
 function set_default_settings(){
@@ -42,11 +44,11 @@ function settings_fill_inputs(){
 
 //setup buttons
 $("#settings-save").click(function(){
-    save_settings();
+    save_settings(true);
     show_login_dialog();
 });
 
 $("#settings-cancel").click(function(){
-    load_settings();
+    load_settings(false);
     show_login_dialog();
 })
