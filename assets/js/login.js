@@ -9,12 +9,16 @@ var login = (function (lightdm, $) {
     // private functions
     var setup_users_list = function () {
         $.each(lightdm.users, function (i) {
-            $user.append('<option value="' + lightdm.users[i].name + '">' +lightdm.users[i].display_name + '</option>');
+            var user = $("<option/>");
+            user.attr("value", lightdm.users[i].name);
+            user.html(lightdm.users[i].display_name);
+            $user.append(user);
+            //$user.append('<option value="' + lightdm.users[i].name + '">' +lightdm.users[i].display_name + '</option>');
         });
     };
+    
     var select_user_from_list = function (idx) {
         var idx = idx || 0;
-
         find_and_display_user_picture(idx);
 
         if(lightdm._username){
@@ -39,10 +43,14 @@ var login = (function (lightdm, $) {
         }
     };
     
-    var setup_sessions_list = function() {
+    var setup_sessions_list = function(){
         $.each(lightdm.sessions, function(i) {
             var session = lightdm.sessions[i];
-            $('#session').append('<option value="' + session.key + '">' + session.name + '</option>');
+            var sessionOption = $("<option/>");
+            sessionOption.attr("value", session.key);
+            sessionOption.html(session.name);
+            $session.append(sessionOption);
+            //$('#session').append('<option value="' + session.key + '">' + session.name + '</option>');
         });
     };
     
@@ -54,7 +62,7 @@ var login = (function (lightdm, $) {
     };
     
     var find_and_display_user_picture = function(idx){
-        if(lightdm.users[idx].image == "" || lightdm.users[idx].image == null){
+        if(lightdm.users[idx].image === "" || lightdm.users[idx].image === null){
             $('.profile-img').attr("src", "assets/ui/avatar.png");
         }else{
             $('.profile-img').attr("src", lightdm.users[idx].image);
@@ -100,8 +108,8 @@ var login = (function (lightdm, $) {
     };
 
     // exposed outside of the closure
-    var init = function () {
-        $(function () {
+    var init = function(){
+        $(function(){
             // Setup select lists
             setup_users_list();
             select_user_from_list();

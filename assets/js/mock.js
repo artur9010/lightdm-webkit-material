@@ -57,7 +57,7 @@ if (!('lightdm' in window)) {
             layout: null,
             session: null,
             logged_in: false
-        },
+        }/*,
         {
             name: "brucew",
             real_name: "Batman",
@@ -67,7 +67,7 @@ if (!('lightdm' in window)) {
             layout: null,
             session: null,
             logged_in: true
-        }
+        }*/
     ];
 
     lightdm.num_users = lightdm.users.length;
@@ -163,12 +163,11 @@ if (!('lightdm' in window)) {
     };
 
     if (lightdm.timed_login_delay > 0) {
-        setTimeout(
-            function () {
-                if (!lightdm._timed_login_cancelled()) timed_login();
-            },
-            lightdm.timed_login_delay
-        );
+        setTimeout(function(){
+            if(!lightdm._timed_login_cancelled()){
+                timed_login();
+            }
+        }, lightdm.timed_login_delay);
     }
 }
 // Helper functions
@@ -181,7 +180,7 @@ var _lightdm_mock_check_argument_length = function (args, length) {
 var _lightdm_mock_get_user = function (username) {
     var user = null;
     for (var i = 0; i < lightdm.users.length; ++i) {
-        if (lightdm.users[i].name == username) {
+        if (lightdm.users[i].name === username) {
             user= lightdm.users[i];
             break;
         }

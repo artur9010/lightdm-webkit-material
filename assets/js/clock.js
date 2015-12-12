@@ -9,7 +9,7 @@ function startTime(){
     var suffix = "";
     
     //12-hour clock support :)
-    if(settings['clockStyle'] == "1"){
+    if(settings['clockStyle'] === "1"){
         if(hour > 12){
             suffix = "p.m.";
             hour = hour - 12;

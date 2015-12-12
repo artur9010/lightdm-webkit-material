@@ -6,6 +6,7 @@ body {
     background-size: cover;
     background-attachment: fixed;
     -webkit-user-select: none
+    -moz-user-select: none;
 }
 
 .card {

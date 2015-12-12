@@ -23,13 +23,13 @@ function load_settings(){
 }
 
 function set_default_settings(){
-    if(localStorage.getItem("settings.language") == null || localStorage.getItem("settings.language") == "" || !localStorage.getItem("settings.language")){
+    if(localStorage.getItem("settings.language") === null || localStorage.getItem("settings.language") === "" || !localStorage.getItem("settings.language")){
         localStorage.setItem("settings.language", $("#settings-language").val());
     }
-    if(localStorage.getItem("settings.background") == null || !localStorage.getItem("settings.background")){
+    if(localStorage.getItem("settings.background") === null || !localStorage.getItem("settings.background")){
         localStorage.setItem("settings.background", "random");
     }
-    if(localStorage.getItem("settings.clockStyle") == null || localStorage.getItem("settings.clockStyle") == "" || !localStorage.getItem("settings.clockStyle")){
+    if(localStorage.getItem("settings.clockStyle") === null || localStorage.getItem("settings.clockStyle") === "" || !localStorage.getItem("settings.clockStyle")){
         localStorage.setItem("settings.clockStyle", "0");
     }
 }
