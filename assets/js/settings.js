@@ -39,3 +39,14 @@ function settings_fill_inputs(){
     $("#settings-background").val(settings['background']);
     $("#settings-clockStyle").val(settings['clockStyle']);
 }
+
+//setup buttons
+$("#settings-save").click(function(){
+    save_settings();
+    show_login_dialog();
+});
+
+$("#settings-cancel").click(function(){
+    load_settings();
+    show_login_dialog();
+})

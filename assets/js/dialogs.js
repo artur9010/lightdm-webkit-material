@@ -37,12 +37,6 @@ function show_settings_dialog() {
     });
 }
 
-function show_help_dialog() {
-    $(".card:visible").fadeOut(animation_time, function(){
-        $("#help-dialog").fadeIn(animation_time);
-    });
-}
-
 //setup buttons
 $("#action-settings").click(function(){
     show_settings_dialog();
