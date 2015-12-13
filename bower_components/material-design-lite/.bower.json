@@ -33,6 +33,6 @@
     "commit": "1b9916d2fbac6c2511cefffecffa3fe95a0c8e47"
   },
   "_source": "git://github.com/google/material-design-lite.git",
-  "_target": "~1.0.5",
+  "_target": "~1.0.6",
   "_originalSource": "material-design-lite"
 }

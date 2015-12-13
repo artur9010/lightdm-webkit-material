@@ -1,0 +1,28 @@
+{
+  "name": "material-design-icons-iconfont",
+  "version": "2.0.3",
+  "author": "Material Design Authors",
+  "description": "Material Design icons by Google",
+  "keywords": [
+    "icons",
+    "material",
+    "material-design",
+    "material-design-icons",
+    "material-design-icons-build",
+    "material-design-icons-release",
+    "material-design-icons-dist",
+    "material-design-icons-iconfont",
+    "google"
+  ],
+  "license": "CC-BY-4.0",
+  "homepage": "http://google.com/design/spec",
+  "_release": "2.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.0.3",
+    "commit": "b87f4c1509650270e08b6a112b45cf8990e0f5c7"
+  },
+  "_source": "git://github.com/Jossef/material-design-icons-iconfont.git",
+  "_target": "*",
+  "_originalSource": "material-design-icons-iconfont"
+}

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="bower_components/material-design-lite/material.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="bower_components/mdl-selectfield/mdl-selectfield.min.css">
+    <link rel="stylesheet" href="bower_components/material-design-icons-iconfont/dist/material-design-icons.css">
 </head>
 <body oncontextmenu="return false;">
     <div class="mdl-layout mdl-js-layout">
@@ -18,10 +19,6 @@
                     <img class="profile-img mdl-shadow--2dp" src="assets/ui/avatar.png"/>
                     <form>
                         <div class="form-group">
-                            <!--
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <select id="user" class="mdl-textfield__input select"></select>
-</div>-->
                             <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
                                 <select id="user" name="user" class="mdl-selectfield__select"></select>
                                 <label class="mdl-selectfield__label" for="user"><i class="fa fa-language"></i> User</label>
@@ -36,10 +33,6 @@
                                 <select id="session" name="session" class="mdl-selectfield__select"></select>
                                 <label class="mdl-selectfield__label" for="session"><i class="fa fa-language"></i> Session</label>
                             </div>
-                            <!--
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <select id="session" class="mdl-textfield__input select"></select>
-                            </div>-->
                             <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"><i class="fa fa-sign-in"></i> Sign in</button>
                         </div>
                     </form>
@@ -189,7 +182,7 @@
             </div>
             <div class="mdl-mini-footer__right-section">
                 <ul class="mdl-mini-footer__link-list">
-                    <li id="clock">00:00:00</li>
+                    <li id="clock"></li>
                 </ul>
             </div>
         </footer>
@@ -199,15 +192,15 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/trianglify/dist/trianglify.min.js"></script>
     
+    <!-- Material -->
+    <script src="bower_components/material-design-lite/material.min.js"></script>
+    <script src="bower_components/mdl-selectfield/mdl-selectfield.min.js"></script>
+    
     <!-- Login -->
     <script src="assets/js/mock.js"></script>
     <script src="assets/js/clock.js"></script>
     <script src="assets/js/login.js"></script>
     <script src="assets/js/settings.js"></script>
     <script src="assets/js/dialogs.js"></script>
-    
-    <!-- Material -->
-    <script src="bower_components/material-design-lite/material.min.js"></script>
-    <script src="bower_components/mdl-selectfield/mdl-selectfield.min.js"></script>
 </body>
 </html>
