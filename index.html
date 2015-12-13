@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8">
-    <!--<link rel="stylesheet" href="assets/css/material.min.css">-->
-    <link rel="stylesheet" href="assets/css/material.teal-indigo.min.css">
+    <link rel="stylesheet" href="bower_components/material-design-lite/material.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/mdl-selectfield/mdl-selectfield.min.css">
+    <link rel="stylesheet" href="bower_components/material-design-icons-iconfont/dist/material-design-icons.css">
 </head>
 <body oncontextmenu="return false;">
     <div class="mdl-layout mdl-js-layout">
@@ -16,17 +17,22 @@
                 <div class="header">Welcome back!</div>
                 <div class="content">
                     <img class="profile-img mdl-shadow--2dp" src="assets/ui/avatar.png"/>
+                    <div id="error" style="display: none;"></div>
                     <form>
                         <div class="form-group">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <select id="user" class="mdl-textfield__input select"></select>
+                            <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                                <select id="user" name="user" class="mdl-selectfield__select"></select>
+                                <label class="mdl-selectfield__label" for="user"><i class="fa fa-language"></i> User</label>
                             </div>
+                            
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input class="mdl-textfield__input" type="password"  id="pass">
+                                <input class="mdl-textfield__input" type="password" id="pass">
                                 <label class="mdl-textfield__label" for="pass"><i class="fa fa-lock"></i> Password</label>
                             </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <select id="session" class="mdl-textfield__input select"></select>
+                            
+                            <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                                <select id="session" name="session" class="mdl-selectfield__select"></select>
+                                <label class="mdl-selectfield__label" for="session"><i class="fa fa-language"></i> Session</label>
                             </div>
                             <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"><i class="fa fa-sign-in"></i> Sign in</button>
                         </div>
@@ -40,13 +46,13 @@
                 <div class="content">
                     <form>
                         <div class="form-group">
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <label class="mdl-textfield__label" for="settings-language"><i class="fa fa-language"></i> Language</label>
-                                <select id="settings-language" class="mdl-textfield__input"></select>
+                            <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                                <select id="settings-language" name="settings-language" class="mdl-selectfield__select"></select>
+                                <label class="mdl-selectfield__label" for="settings-language"><i class="fa fa-language"></i> Language</label>
                             </div>
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <label class="mdl-textfield__label" for="settings-background"><i class="fa fa-desktop"></i> Background color sheme</label>
-                                <select id="settings-background" class="mdl-textfield__input">
+                            <!--
+                            <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                                <select id="settings-background" name="settings-background" class="mdl-selectfield__select">
                                     <option value="random">Random (default)</option>
                                     <optgroup label="One-color">
                                         <option value="Blues">Blue</option>
@@ -61,14 +67,45 @@
                                         <option value="YlOrBr">Yellow-Orange-Brown</option>
                                     </optgroup>
                                 </select>
+                                <label class="mdl-textfield__label" for="settings-background" class="mdl-selectfield__select"><i class="fa fa-desktop"></i> Background color sheme</label>
+                            </div>-->
+                            <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                                <select id="settings-background" name="settings-background" class="mdl-selectfield__select">
+                                    <option value="random">Random (default)</option>
+                                    <optgroup label="One-color">
+                                        <option value="Blues">Blue</option>
+                                        <option value="Purples">Purple</option>
+                                        <option value="Oranges">Orange</option>
+                                        <option value="Reds">Red</option>
+                                    </optgroup>
+                                    <!--
+                                    <optgroup label="Multiple colours">
+                                        <option value="YlOrRd">Yellow-Orange-Red</option>
+                                        <option value="YlGnBu">Yellow-Green-Blue</option>
+                                        <option value="PuOr">Purple-Orange</option>
+                                        <option value="YlOrBr">Yellow-Orange-Brown</option>
+                                    </optgroup>-->
+                                </select>
+                                <label class="mdl-selectfield__label" for="settings-background"><i class="fa fa-desktop"></i> Background color sheme</label>
                             </div>
+                            
+                            <!--
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <label class="mdl-textfield__label" for="settings-clockStyle"><i class="fa fa-clock-o"></i> Use 12-hour clock</label>
                                 <select id="settings-clockStyle" class="mdl-textfield__input">
                                     <option value="0">No (default)</option>
                                     <option value="1">Yes</option>
                                 </select>
+                            </div>-->
+                            
+                            <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                                <select id="settings-clockStyle" name="settings-clockStyle" class="mdl-selectfield__select">
+                                    <option value="0">No (default)</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                                <label class="mdl-selectfield__label" for="settings-clockStyle"><i class="fa fa-clock-o"></i> Use 12-hour clock</label>
                             </div>
+                            
                             <br/>
                             <button id="settings-cancel" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                                 <i class="fa fa-ban"></i> Cancel
@@ -146,15 +183,19 @@
             </div>
             <div class="mdl-mini-footer__right-section">
                 <ul class="mdl-mini-footer__link-list">
-                    <li id="clock">00:00:00</li>
+                    <li id="clock"></li>
                 </ul>
             </div>
         </footer>
     </div>
     
     <!-- Required libs -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/trianglify.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/trianglify/dist/trianglify.min.js"></script>
+    
+    <!-- Material -->
+    <script src="bower_components/material-design-lite/material.min.js"></script>
+    <script src="bower_components/mdl-selectfield/mdl-selectfield.min.js"></script>
     
     <!-- Login -->
     <script src="assets/js/mock.js"></script>
@@ -162,9 +203,6 @@
     <script src="assets/js/login.js"></script>
     <script src="assets/js/settings.js"></script>
     <script src="assets/js/dialogs.js"></script>
-    
-    <!-- Material -->
-    <script src="assets/js/material.min.js"></script>
-    <script src="assets/js/mdl-select.js"></script>
+    <script src="assets/js/errorbox.js"></script>
 </body>
 </html>

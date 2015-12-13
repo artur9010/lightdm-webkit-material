@@ -9,6 +9,18 @@ body {
     -moz-user-select: none;
 }
 
+#error{
+    background-color: #f44336;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: -40px;
+    margin-right: -40px;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
 .card {
     overflow: hidden;
     background-color: #ffffff;
@@ -16,6 +28,13 @@ body {
     border-radius: 3px;
     min-width: 344px;
     max-width: 344px;
+}
+
+/* Laptop */
+@media screen and (max-height: 768px){
+    .card{
+        margin: 75px auto 25px;
+    }
 }
 
 .card .header{
