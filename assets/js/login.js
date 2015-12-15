@@ -114,7 +114,7 @@ var login = (function (lightdm, $) {
             setup_users_list();
             select_user_from_list();
             setup_sessions_list();
-            setup_language_list();
+            //setup_language_list(); //not works :<
             
             // Hide usunsed/blocked/disabled options
             if(!lightdm.can_restart){
