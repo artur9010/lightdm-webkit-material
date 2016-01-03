@@ -37,6 +37,24 @@ var login = (function (lightdm, $) {
             }else{
                 $session.show();
             }
+
+            //Last used session
+            //NS_ERROR_DOM_BAD_URI: Access to restricted URI denied
+            //...
+            /*var lastSession = "";
+            var dmrc = "lel";
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function(){
+                console.log(xmlhttp.status);
+                console.log(xmlhttp.readyState);
+                if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
+                    dmrc = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.open("GET","abc.txt",true);
+            xmlhttp.send();
+            console.log(dmrc);
+            $session.attr("value", ""); //todo */
             
             //Set language and layout for user
             lightdm.users[idx].language = settings['language'];
