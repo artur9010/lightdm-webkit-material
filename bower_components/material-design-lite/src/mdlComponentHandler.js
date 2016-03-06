@@ -91,7 +91,6 @@ componentHandler = (function() {
   /** @type {!Array<componentHandler.Component>} */
   var createdComponents_ = [];
 
-  var downgradeMethod_ = 'mdlDowngrade';
   var componentConfigProperty_ = 'mdlComponentConfigInternal_';
 
   /**
@@ -336,39 +335,19 @@ componentHandler = (function() {
   }
 
   /**
-   * Finds a created component by a given DOM node.
-   *
-   * @param {!Node} node
-   * @return {*}
-   */
-  function findCreatedComponentByNodeInternal(node) {
-    for (var n = 0; n < createdComponents_.length; n++) {
-      var component = createdComponents_[n];
-      if (component.element_ === node) {
-        return component;
-      }
-    }
-  }
-
-  /**
    * Check the component for the downgrade method.
    * Execute if found.
    * Remove component from createdComponents list.
    *
-   * @param {*} component
+   * @param {?componentHandler.Component} component
    */
   function deconstructComponentInternal(component) {
-    if (component &&
-        component[componentConfigProperty_]
-          .classConstructor.prototype
-          .hasOwnProperty(downgradeMethod_)) {
-      component[downgradeMethod_]();
+    if (component) {
       var componentIndex = createdComponents_.indexOf(component);
       createdComponents_.splice(componentIndex, 1);
 
       var upgrades = component.element_.getAttribute('data-upgraded').split(',');
-      var componentPlace = upgrades.indexOf(
-          component[componentConfigProperty_].classAsString);
+      var componentPlace = upgrades.indexOf(component[componentConfigProperty_].classAsString);
       upgrades.splice(componentPlace, 1);
       component.element_.setAttribute('data-upgraded', upgrades.join(','));
 
@@ -389,7 +368,9 @@ componentHandler = (function() {
      * @param  {!Node} node the node to be downgraded
      */
     var downgradeNode = function(node) {
-      deconstructComponentInternal(findCreatedComponentByNodeInternal(node));
+      createdComponents_.filter(function(item) {
+        return item.element_ === node;
+      }).forEach(deconstructComponentInternal);
     };
     if (nodes instanceof Array || nodes instanceof NodeList) {
       for (var n = 0; n < nodes.length; n++) {

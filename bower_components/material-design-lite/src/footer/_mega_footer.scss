@@ -268,7 +268,7 @@
 
     & + .mdl-mega-footer--heading:after,
     & + .mdl-mega-footer__heading:after {
-      background-image: none;
+      content: '';
     }
   }
   .mdl-mega-footer--heading-checkbox:checked,

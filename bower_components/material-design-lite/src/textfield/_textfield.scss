@@ -20,11 +20,8 @@
 // The container for the whole component.
 .mdl-textfield {
   position: relative;
-
   font-size: $input-text-font-size;
-
   display: inline-block;
-
   box-sizing: border-box;
   width: 300px;
   max-width: 100%;
@@ -61,12 +58,23 @@
   border-bottom: 1px solid $input-text-bottom-border-color;
   display: block;
   font-size: $input-text-font-size;
+  font-family: $performance_font;
   margin: 0;
   padding: $input-text-padding 0;
   width: $input-text-width;
   background: none;
   text-align: left;
   color: inherit;
+
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  &[type="number"]::-webkit-inner-spin-button,
+  &[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
   .mdl-textfield.is-focused & {
     outline: none;
@@ -77,6 +85,7 @@
     box-shadow: none;
   }
 
+  fieldset[disabled] .mdl-textfield &,
   .mdl-textfield.is-disabled & {
     background-color: transparent;
     border-bottom: 1px dotted $input-text-disabled-color;
@@ -104,7 +113,8 @@
   white-space: nowrap;
   text-align: left;
 
-  .mdl-textfield.is-dirty & {
+  .mdl-textfield.is-dirty &,
+  .mdl-textfield.has-placeholder & {
     visibility: hidden;
   }
 
@@ -113,12 +123,18 @@
     @include material-animation-default();
   }
 
+  .mdl-textfield--floating-label.has-placeholder & {
+    transition: none;
+  }
+
+  fieldset[disabled] .mdl-textfield &,
   .mdl-textfield.is-disabled.is-disabled & {
     color: $input-text-disabled-text-color;
   }
 
   .mdl-textfield--floating-label.is-focused &,
-  .mdl-textfield--floating-label.is-dirty & {
+  .mdl-textfield--floating-label.is-dirty &,
+  .mdl-textfield--floating-label.has-placeholder & {
     color: $input-text-highlight-color;
     font-size : $input-text-floating-label-fontsize;
     top: $input-text-vertical-spacing - ($input-text-floating-label-fontsize + $input-text-padding);
@@ -126,7 +142,8 @@
   }
 
   .mdl-textfield--floating-label.is-focused .mdl-textfield__expandable-holder &,
-  .mdl-textfield--floating-label.is-dirty .mdl-textfield__expandable-holder &{
+  .mdl-textfield--floating-label.is-dirty .mdl-textfield__expandable-holder &,
+  .mdl-textfield--floating-label.has-placeholder .mdl-textfield__expandable-holder & {
     top: -($input-text-floating-label-fontsize + $input-text-padding);
   }
 

@@ -43,10 +43,23 @@
   MaterialLayout.prototype.Constant_ = {
     MAX_WIDTH: '(max-width: 1024px)',
     TAB_SCROLL_PIXELS: 100,
+    RESIZE_TIMEOUT: 100,
 
-    MENU_ICON: 'menu',
+    MENU_ICON: '&#xE5D2;',
     CHEVRON_LEFT: 'chevron_left',
     CHEVRON_RIGHT: 'chevron_right'
+  };
+
+  /**
+   * Keycodes, for code readability.
+   *
+   * @enum {number}
+   * @private
+   */
+  MaterialLayout.prototype.Keycodes_ = {
+    ENTER: 13,
+    ESCAPE: 27,
+    SPACE: 32
   };
 
   /**
@@ -125,16 +138,38 @@
       return;
     }
 
+    var headerVisible =
+        !this.element_.classList.contains(this.CssClasses_.IS_SMALL_SCREEN) ||
+        this.element_.classList.contains(this.CssClasses_.FIXED_HEADER);
+
     if (this.content_.scrollTop > 0 &&
         !this.header_.classList.contains(this.CssClasses_.IS_COMPACT)) {
       this.header_.classList.add(this.CssClasses_.CASTING_SHADOW);
       this.header_.classList.add(this.CssClasses_.IS_COMPACT);
-      this.header_.classList.add(this.CssClasses_.IS_ANIMATING);
+      if (headerVisible) {
+        this.header_.classList.add(this.CssClasses_.IS_ANIMATING);
+      }
     } else if (this.content_.scrollTop <= 0 &&
         this.header_.classList.contains(this.CssClasses_.IS_COMPACT)) {
       this.header_.classList.remove(this.CssClasses_.CASTING_SHADOW);
       this.header_.classList.remove(this.CssClasses_.IS_COMPACT);
-      this.header_.classList.add(this.CssClasses_.IS_ANIMATING);
+      if (headerVisible) {
+        this.header_.classList.add(this.CssClasses_.IS_ANIMATING);
+      }
+    }
+  };
+
+  /**
+   * Handles a keyboard event on the drawer.
+   *
+   * @param {Event} evt The event that fired.
+   * @private
+   */
+  MaterialLayout.prototype.keyboardEventHandler_ = function(evt) {
+    // Only react when the drawer is open.
+    if (evt.keyCode === this.Keycodes_.ESCAPE &&
+        this.drawer_.classList.contains(this.CssClasses_.IS_DRAWER_OPEN)) {
+      this.toggleDrawer();
     }
   };
 
@@ -157,13 +192,23 @@
   };
 
   /**
-   * Handles toggling of the drawer.
+   * Handles events of drawer button.
    *
+   * @param {Event} evt The event that fired.
    * @private
    */
-  MaterialLayout.prototype.drawerToggleHandler_ = function() {
-    this.drawer_.classList.toggle(this.CssClasses_.IS_DRAWER_OPEN);
-    this.obfuscator_.classList.toggle(this.CssClasses_.IS_DRAWER_OPEN);
+  MaterialLayout.prototype.drawerToggleHandler_ = function(evt) {
+    if (evt && (evt.type === 'keydown')) {
+      if (evt.keyCode === this.Keycodes_.SPACE || evt.keyCode === this.Keycodes_.ENTER) {
+        // prevent scrolling in drawer nav
+        evt.preventDefault();
+      } else {
+        // prevent other keys
+        return;
+      }
+    }
+
+    this.toggleDrawer();
   };
 
   /**
@@ -210,15 +255,44 @@
   };
 
   /**
+  * Toggle drawer state
+  *
+  * @public
+  */
+  MaterialLayout.prototype.toggleDrawer = function() {
+    var drawerButton = this.element_.querySelector('.' + this.CssClasses_.DRAWER_BTN);
+    this.drawer_.classList.toggle(this.CssClasses_.IS_DRAWER_OPEN);
+    this.obfuscator_.classList.toggle(this.CssClasses_.IS_DRAWER_OPEN);
+
+    // Set accessibility properties.
+    if (this.drawer_.classList.contains(this.CssClasses_.IS_DRAWER_OPEN)) {
+      this.drawer_.setAttribute('aria-hidden', 'false');
+      drawerButton.setAttribute('aria-expanded', 'true');
+    } else {
+      this.drawer_.setAttribute('aria-hidden', 'true');
+      drawerButton.setAttribute('aria-expanded', 'false');
+    }
+  };
+  MaterialLayout.prototype['toggleDrawer'] =
+      MaterialLayout.prototype.toggleDrawer;
+
+  /**
    * Initialize element.
    */
   MaterialLayout.prototype.init = function() {
     if (this.element_) {
       var container = document.createElement('div');
       container.classList.add(this.CssClasses_.CONTAINER);
+
+      var focusedElement = this.element_.querySelector(':focus');
+
       this.element_.parentElement.insertBefore(container, this.element_);
       this.element_.parentElement.removeChild(this.element_);
       container.appendChild(this.element_);
+
+      if (focusedElement) {
+        focusedElement.focus();
+      }
 
       var directChildren = this.element_.childNodes;
       var numChildren = directChildren.length;
@@ -239,6 +313,16 @@
           this.content_ = child;
         }
       }
+
+      window.addEventListener('pageshow', function(e) {
+        if (e.persisted) { // when page is loaded from back/forward cache
+          // trigger repaint to let layout scroll in safari
+          this.element_.style.overflowY = 'hidden';
+          requestAnimationFrame(function() {
+            this.element_.style.overflowY = '';
+          }.bind(this));
+        }
+      }.bind(this), false);
 
       if (this.header_) {
         this.tabBar_ = this.header_.querySelector('.' + this.CssClasses_.TAB_BAR);
@@ -288,11 +372,14 @@
           this.CssClasses_.DRAWER_BTN);
         if (!drawerButton) {
           drawerButton = document.createElement('div');
+          drawerButton.setAttribute('aria-expanded', 'false');
+          drawerButton.setAttribute('role', 'button');
+          drawerButton.setAttribute('tabindex', '0');
           drawerButton.classList.add(this.CssClasses_.DRAWER_BTN);
 
           var drawerButtonIcon = document.createElement('i');
           drawerButtonIcon.classList.add(this.CssClasses_.ICON);
-          drawerButtonIcon.textContent = this.Constant_.MENU_ICON;
+          drawerButtonIcon.innerHTML = this.Constant_.MENU_ICON;
           drawerButton.appendChild(drawerButtonIcon);
         }
 
@@ -305,6 +392,9 @@
         }
 
         drawerButton.addEventListener('click',
+            this.drawerToggleHandler_.bind(this));
+
+        drawerButton.addEventListener('keydown',
             this.drawerToggleHandler_.bind(this));
 
         // Add a class if the layout has a drawer, for altering the left padding.
@@ -326,6 +416,9 @@
         obfuscator.addEventListener('click',
             this.drawerToggleHandler_.bind(this));
         this.obfuscator_ = obfuscator;
+
+        this.drawer_.addEventListener('keydown', this.keyboardEventHandler_.bind(this));
+        this.drawer_.setAttribute('aria-hidden', 'true');
       }
 
       // Keep an eye on screen size, and add/remove auxiliary class for styling
@@ -370,8 +463,9 @@
         tabContainer.appendChild(this.tabBar_);
         tabContainer.appendChild(rightButton);
 
-        // Add and remove buttons depending on scroll position.
-        var tabScrollHandler = function() {
+        // Add and remove tab buttons depending on scroll position and total
+        // window size.
+        var tabUpdateHandler = function() {
           if (this.tabBar_.scrollLeft > 0) {
             leftButton.classList.add(this.CssClasses_.IS_ACTIVE);
           } else {
@@ -386,8 +480,22 @@
           }
         }.bind(this);
 
-        this.tabBar_.addEventListener('scroll', tabScrollHandler);
-        tabScrollHandler();
+        this.tabBar_.addEventListener('scroll', tabUpdateHandler);
+        tabUpdateHandler();
+
+        // Update tabs when the window resizes.
+        var windowResizeHandler = function() {
+          // Use timeouts to make sure it doesn't happen too often.
+          if (this.resizeTimeoutId_) {
+            clearTimeout(this.resizeTimeoutId_);
+          }
+          this.resizeTimeoutId_ = setTimeout(function() {
+            tabUpdateHandler();
+            this.resizeTimeoutId_ = null;
+          }.bind(this), /** @type {number} */ (this.Constant_.RESIZE_TIMEOUT));
+        }.bind(this);
+
+        window.addEventListener('resize', windowResizeHandler);
 
         if (this.tabBar_.classList.contains(this.CssClasses_.JS_RIPPLE_EFFECT)) {
           this.tabBar_.classList.add(this.CssClasses_.RIPPLE_IGNORE_EVENTS);
@@ -417,6 +525,19 @@
    * @param {MaterialLayout} layout The MaterialLayout object that owns the tab.
    */
   function MaterialLayoutTab(tab, tabs, panels, layout) {
+
+    /**
+     * Auxiliary method to programmatically select a tab in the UI.
+     */
+    function selectTab() {
+      var href = tab.href.split('#')[1];
+      var panel = layout.content_.querySelector('#' + href);
+      layout.resetTabState_(tabs);
+      layout.resetPanelState_(panels);
+      tab.classList.add(layout.CssClasses_.IS_ACTIVE);
+      panel.classList.add(layout.CssClasses_.IS_ACTIVE);
+    }
+
     if (layout.tabBar_.classList.contains(
         layout.CssClasses_.JS_RIPPLE_EFFECT)) {
       var rippleContainer = document.createElement('span');
@@ -429,6 +550,15 @@
     }
 
     tab.addEventListener('click', function(e) {
+      if (tab.getAttribute('href').charAt(0) === '#') {
+        e.preventDefault();
+        selectTab();
+      }
+    });
+
+    tab.show = selectTab;
+
+    tab.addEventListener('click', function(e) {
       e.preventDefault();
       var href = tab.href.split('#')[1];
       var panel = layout.content_.querySelector('#' + href);
@@ -438,6 +568,7 @@
       panel.classList.add(layout.CssClasses_.IS_ACTIVE);
     });
   }
+  window['MaterialLayoutTab'] = MaterialLayoutTab;
 
   // The component registers itself. It can assume componentHandler is available
   // in the global scope.

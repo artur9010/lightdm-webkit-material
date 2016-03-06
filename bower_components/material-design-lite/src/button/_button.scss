@@ -25,12 +25,13 @@
   color: $button-secondary-color;
   position: relative;
   height: $button-height;
+  margin: 0;
   min-width: $button-min-width;
   padding: 0 $button-padding;
   display: inline-block;
   @include typo-button();
   overflow: hidden;
-  will-change: box-shadow, transform;
+  will-change: box-shadow;
   transition: box-shadow 0.2s $animation-curve-fast-out-linear-in,
               background-color 0.2s $animation-curve-default,
               color 0.2s $animation-curve-default;
@@ -277,7 +278,6 @@ input.mdl-button[type="submit"] {
     &.mdl-button--disabled.mdl-button--disabled {
       background-color: $button-primary-color-disabled;
       color: $button-secondary-color-disabled;
-      @include shadow-2dp();
     }
   }
 
@@ -287,7 +287,7 @@ input.mdl-button[type="submit"] {
     &.mdl-button--disabled.mdl-button--disabled {
       background-color: $button-primary-color-disabled;
       color: $button-secondary-color-disabled;
-      @include shadow-2dp();
+      box-shadow: none;
     }
   }
   &--colored {

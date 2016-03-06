@@ -53,7 +53,11 @@
    * @private
    */
   MaterialTooltip.prototype.CssClasses_ = {
-    IS_ACTIVE: 'is-active'
+    IS_ACTIVE: 'is-active',
+    BOTTOM: 'mdl-tooltip--bottom',
+    LEFT: 'mdl-tooltip--left',
+    RIGHT: 'mdl-tooltip--right',
+    TOP: 'mdl-tooltip--top'
   };
 
   /**
@@ -63,36 +67,51 @@
    * @private
    */
   MaterialTooltip.prototype.handleMouseEnter_ = function(event) {
-    event.stopPropagation();
     var props = event.target.getBoundingClientRect();
     var left = props.left + (props.width / 2);
+    var top = props.top + (props.height / 2);
     var marginLeft = -1 * (this.element_.offsetWidth / 2);
+    var marginTop = -1 * (this.element_.offsetHeight / 2);
 
-    if (left + marginLeft < 0) {
-      this.element_.style.left = 0;
-      this.element_.style.marginLeft = 0;
+    if (this.element_.classList.contains(this.CssClasses_.LEFT) || this.element_.classList.contains(this.CssClasses_.RIGHT)) {
+      left = (props.width / 2);
+      if (top + marginTop < 0) {
+        this.element_.style.top = 0;
+        this.element_.style.marginTop = 0;
+      } else {
+        this.element_.style.top = top + 'px';
+        this.element_.style.marginTop = marginTop + 'px';
+      }
     } else {
-      this.element_.style.left = left + 'px';
-      this.element_.style.marginLeft = marginLeft + 'px';
+      if (left + marginLeft < 0) {
+        this.element_.style.left = 0;
+        this.element_.style.marginLeft = 0;
+      } else {
+        this.element_.style.left = left + 'px';
+        this.element_.style.marginLeft = marginLeft + 'px';
+      }
     }
 
-    this.element_.style.top = props.top + props.height + 10 + 'px';
+    if (this.element_.classList.contains(this.CssClasses_.TOP)) {
+      this.element_.style.top = props.top - this.element_.offsetHeight - 10 + 'px';
+    } else if (this.element_.classList.contains(this.CssClasses_.RIGHT)) {
+      this.element_.style.left = props.left + props.width + 10 + 'px';
+    } else if (this.element_.classList.contains(this.CssClasses_.LEFT)) {
+      this.element_.style.left = props.left - this.element_.offsetWidth - 10 + 'px';
+    } else {
+      this.element_.style.top = props.top + props.height + 10 + 'px';
+    }
+
     this.element_.classList.add(this.CssClasses_.IS_ACTIVE);
-    window.addEventListener('scroll', this.boundMouseLeaveHandler, false);
-    window.addEventListener('touchmove', this.boundMouseLeaveHandler, false);
   };
 
   /**
    * Handle mouseleave for tooltip.
    *
-   * @param {Event} event The event that fired.
    * @private
    */
-  MaterialTooltip.prototype.handleMouseLeave_ = function(event) {
-    event.stopPropagation();
+  MaterialTooltip.prototype.handleMouseLeave_ = function() {
     this.element_.classList.remove(this.CssClasses_.IS_ACTIVE);
-    window.removeEventListener('scroll', this.boundMouseLeaveHandler);
-    window.removeEventListener('touchmove', this.boundMouseLeaveHandler, false);
   };
 
   /**
@@ -108,49 +127,20 @@
       }
 
       if (this.forElement_) {
-        // Tabindex needs to be set for `blur` events to be emitted
+        // It's left here because it prevents accidental text selection on Android
         if (!this.forElement_.hasAttribute('tabindex')) {
           this.forElement_.setAttribute('tabindex', '0');
         }
 
         this.boundMouseEnterHandler = this.handleMouseEnter_.bind(this);
         this.boundMouseLeaveHandler = this.handleMouseLeave_.bind(this);
-        this.forElement_.addEventListener('mouseenter', this.boundMouseEnterHandler,
-            false);
-        this.forElement_.addEventListener('click', this.boundMouseEnterHandler,
-            false);
-        this.forElement_.addEventListener('blur', this.boundMouseLeaveHandler);
-        this.forElement_.addEventListener('touchstart', this.boundMouseEnterHandler,
-            false);
-        this.forElement_.addEventListener('mouseleave', this.boundMouseLeaveHandler);
+        this.forElement_.addEventListener('mouseenter', this.boundMouseEnterHandler, false);
+        this.forElement_.addEventListener('touchend', this.boundMouseEnterHandler, false);
+        this.forElement_.addEventListener('mouseleave', this.boundMouseLeaveHandler, false);
+        window.addEventListener('touchstart', this.boundMouseLeaveHandler);
       }
     }
   };
-
-  /**
-   * Downgrade the component
-   *
-   * @private
-   */
-  MaterialTooltip.prototype.mdlDowngrade_ = function() {
-    if (this.forElement_) {
-      this.forElement_.removeEventListener('mouseenter', this.boundMouseEnterHandler, false);
-      this.forElement_.removeEventListener('click', this.boundMouseEnterHandler, false);
-      this.forElement_.removeEventListener('touchstart', this.boundMouseEnterHandler, false);
-      this.forElement_.removeEventListener('mouseleave', this.boundMouseLeaveHandler);
-    }
-  };
-
-  /**
-   * Public alias for the downgrade method.
-   *
-   * @public
-   */
-  MaterialTooltip.prototype.mdlDowngrade =
-      MaterialTooltip.prototype.mdlDowngrade_;
-
-  MaterialTooltip.prototype['mdlDowngrade'] =
-      MaterialTooltip.prototype.mdlDowngrade;
 
   // The component registers itself. It can assume componentHandler is available
   // in the global scope.

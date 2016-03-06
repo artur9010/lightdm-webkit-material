@@ -6,7 +6,9 @@ Menus are an established but non-standardized feature in user interfaces, and al
 
 ### To include an MDL **menu** component:
 
-&nbsp;1. Code a `<button>` element; this is the clickable toggle that will show and hide the menu options. Include an `id` attribute whose value will match the `for` attribute of the unordered list coded in the next step. Inside the button, code a `<i>` or `<span>` element to contain an icon of your choice.
+> **Note:** The menu requires a non-static positioned parent element. Positioning options may not work properly if the menu is inside of a statically positioned node.
+
+&nbsp;1. Code a `<button>` element; this is the clickable toggle that will show and hide the menu options. Include an `id` attribute whose value will match the `for` (or `data-mdl-for`) attribute of the unordered list coded in the next step. Inside the button, code a `<i>` or `<span>` element to contain an icon of your choice.
 ```html
 <button id="menu1">
   <i></i>
@@ -91,6 +93,7 @@ The MDL CSS classes apply various predefined visual and behavioral enhancements 
 | `mdl-menu` | Defines an unordered list container as an MDL component | Required on ul element |
 | `mdl-js-menu` | Assigns basic MDL behavior to menu | Required on ul element |
 | `mdl-menu__item` | Defines buttons as MDL menu options and assigns basic MDL behavior | Required on list item elements |
+| `mdl-menu__item--full-bleed-divider` | Modifies an item to have a full bleed divider between it and the next list item. | Optional on list item elements |
 | `mdl-js-ripple-effect` | Applies *ripple* click effect to option links | Optional; goes on unordered list element |
 | `mdl-menu--top-left` | Positions menu above button, aligns left edge of menu with button  | Optional; goes on unordered list element |
 | (none) | Positions menu below button, aligns left edge of menu with button | Default |
@@ -101,5 +104,5 @@ The MDL CSS classes apply various predefined visual and behavioral enhancements 
 
 (2) The `i` or `span` element in "button"" element can be used interchangeably.
 
->**Note:** Disabled versions of the menu options are provided, and are invoked with the standard HTML boolean attribute `disabled`. `<li class="mdl-menu__item" disabled>Medium</li>`
+>**Note:** Disabled versions of the menu options are provided, and are invoked with the standard HTML boolean attribute `disabled` or `data-mdl-disabled`. `<li class="mdl-menu__item" disabled>Medium</li>`
 >This attribute may be added or removed programmatically via scripting.
