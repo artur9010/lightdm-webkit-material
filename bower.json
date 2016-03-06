@@ -3,10 +3,13 @@
     "version": "0.0.1",
     "dependencies": {
         "jquery": "~2.1.4",
-        "material-design-lite": "~1.0.6",
+        "material-design-lite": "~1.1.2",
         "mdl-selectfield": "https://github.com/MEYVN-digital/mdl-selectfield.git",
         "trianglify": "https://github.com/qrohlf/trianglify.git",
         "material-design-icons-iconfont": "",
         "components-font-awesome": ""
+    },
+        "resolutions": {
+        "material-design-lite": "~1.1.2"
     }
 }
