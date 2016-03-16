@@ -1,8 +1,8 @@
 function show_message(text) {
-	$("#error").html(text)
-    $("#error").show();
+    $("#error").html(text)
+        .show();
 }
 
 function show_error(text) {
-	show_message(text);
+    show_message(text);
 }

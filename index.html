@@ -23,7 +23,7 @@
                         <div class="form-group">
                             <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
                                 <select id="user" name="user" class="mdl-selectfield__select"></select>
-                                <label class="mdl-selectfield__label" for="user"><i class="fa fa-language"></i> User</label>
+                                <label class="mdl-selectfield__label" for="user"><i class="fa fa-user"></i> User</label>
                             </div>
                             
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -33,7 +33,8 @@
                             
                             <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
                                 <select id="session" name="session" class="mdl-selectfield__select"></select>
-                                <label class="mdl-selectfield__label" for="session"><i class="fa fa-language"></i> Session</label>
+                                <label class="mdl-selectfield__label" for="session"><i class="fa fa-desktop"></i>
+                                    Session</label>
                             </div>
                             <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"><i class="fa fa-sign-in"></i> Sign in</button>
                         </div>
@@ -68,7 +69,8 @@
                                         <option value="YlOrBr">Yellow-Orange-Brown</option>
                                     </optgroup>-->
                                 </select>
-                                <label class="mdl-selectfield__label" for="settings-background"><i class="fa fa-desktop"></i> Background color sheme</label>
+                                <label class="mdl-selectfield__label" for="settings-background"><i
+                                        class="fa fa-paint-brush"></i> Background color scheme</label>
                             </div>
                             
                             <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
@@ -78,8 +80,15 @@
                                 </select>
                                 <label class="mdl-selectfield__label" for="settings-clockStyle"><i class="fa fa-clock-o"></i> Use 12-hour clock</label>
                             </div>
-                            
-                            <br/>
+
+                            <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                                <select id="settings-defaultSession" name="settings-defaultSession"
+                                        class="mdl-selectfield__select">
+                                </select>
+                                <label class="mdl-selectfield__label" for="settings-defaultSession"><i
+                                        class="fa fa-desktop"></i> Default session</label>
+                            </div>
+
                             <button id="settings-cancel" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                                 <i class="fa fa-ban"></i> Cancel
                             </button>

@@ -40,16 +40,16 @@ function show_settings_dialog() {
 //setup buttons
 $("#action-settings").click(function(){
     show_settings_dialog();
-})
+});
 $("#action-shutdown").click(function(){
     show_shutdown_dialog();
-})
+});
 $("#action-reboot").click(function(){
     show_restart_dialog();
-})
+});
 $("#action-suspend").click(function(){
     show_suspend_dialog();
-})
+});
 $("#action-hibernate").click(function(){
     show_hibernate_dialog();
-})
+});

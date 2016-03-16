@@ -21,7 +21,7 @@ if (!('lightdm' in window)) {
         {
             name: "us",
             short_description: "test description",
-            short_description:"really long epic description"
+            long_description: "really long epic description"
         }
     ];
     lightdm.default_layout = lightdm.layouts[0];
@@ -175,7 +175,7 @@ var _lightdm_mock_check_argument_length = function (args, length) {
     if (args.length != length) {
         throw "incorrect number of arguments in function call";
     }
-}
+};
 
 var _lightdm_mock_get_user = function (username) {
     var user = null;
@@ -186,4 +186,4 @@ var _lightdm_mock_get_user = function (username) {
         }
     }
     return user;
-}
+};

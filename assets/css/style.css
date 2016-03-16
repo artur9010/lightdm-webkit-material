@@ -60,3 +60,7 @@ body {
 .mdl-mini-footer{
     padding: 4px 10px;
 }
+
+.mdl-mini-footer__link-list li:not(#clock) {
+    cursor: pointer;
+}
