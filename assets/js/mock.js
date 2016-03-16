@@ -115,7 +115,6 @@ if (!('lightdm' in window)) {
         if (!user) {
             show_error(username + " is an invalid user");
         }
-        show_prompt("Password: ");
         lightdm._username = username;
     };
 

@@ -62,7 +62,6 @@ var login = (function (lightdm, $) {
     };
 
     var setup_sessions_list = function () {
-        console.log("starting session loading");
         $.each(lightdm.sessions, function (i) {
             var session = lightdm.sessions[i];
             var sessionOption = $("<option/>");
@@ -71,7 +70,6 @@ var login = (function (lightdm, $) {
             $session.append(sessionOption);
             //$('#session').append('<option value="' + session.key + '">' + session.name + '</option>');
         });
-        console.log("sessions now loaded");
     };
 
     var setup_language_list = function () {
@@ -160,9 +158,14 @@ var login = (function (lightdm, $) {
             });
 
             $('form').on('submit', function (e) {
-                e.preventDefault();
-                window.provide_secret();
-            });
+                    e.preventDefault();
+                    window.provide_secret();
+                })
+                .find('button[type=submit]')
+                .click(function (e) {
+                    e.preventDefault();
+                    window.provide_secret();
+                });
         });
     };
 
