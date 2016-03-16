@@ -4,7 +4,7 @@ var login = (function (lightdm, $) {
     var $user = $('#user');
     var $pass = $('#pass');
     var $session = $('#session');
-    var $lang = $("#settings-language");
+    //var $lang = $("#settings-language"); // Unused
 
     // private functions
     var setup_users_list = function () {
@@ -38,24 +38,6 @@ var login = (function (lightdm, $) {
                 $session.show();
             }
 
-            //Last used session
-            //NS_ERROR_DOM_BAD_URI: Access to restricted URI denied
-            //...
-            /*var lastSession = "";
-             var dmrc = "lel";
-             var xmlhttp = new XMLHttpRequest();
-             xmlhttp.onreadystatechange = function(){
-             console.log(xmlhttp.status);
-             console.log(xmlhttp.readyState);
-             if(xmlhttp.status == 200 && xmlhttp.readyState == 4){
-             dmrc = xmlhttp.responseText;
-             }
-             }
-             xmlhttp.open("GET","abc.txt",true);
-             xmlhttp.send();
-             console.log(dmrc);
-             $session.attr("value", ""); //todo */
-
             //Set language and layout for user
             lightdm.users[idx].language = settings['language'];
         }
@@ -72,12 +54,13 @@ var login = (function (lightdm, $) {
         });
     };
 
-    var setup_language_list = function () {
+    // Unused so commented out :)
+    /*var setup_language_list = function () {
         $.each(lightdm.languages, function (i) {
             var lang = lightdm.languages[i];
             $lang.append('<option value="' + lang.code + '">' + lang.name + '</option>');
         });
-    };
+     };*/
 
     var find_and_display_user_picture = function (idx) {
         if (lightdm.users[idx].image === "" || lightdm.users[idx].image === null) {
@@ -106,7 +89,6 @@ var login = (function (lightdm, $) {
 
     window.authentication_complete = function () {
         if (lightdm.is_authenticated) {
-            show_prompt('Logged in');
             lightdm.login(
                 lightdm.authentication_user,
                 $session.val()
@@ -115,13 +97,12 @@ var login = (function (lightdm, $) {
     };
 
     // These can be used for user feedback
-    window.show_error = function (e) {
-        console.log('Error: ' + e);
-
+    window.show_message = function (text, type) {
+        show_message('[' + type + '] ' + text);
     };
 
-    window.show_prompt = function (e) {
-        console.log('Prompt: ' + e);
+    window.show_prompt = function (text, type) {
+        return prompt('[' + type + '] Prompt: ' + text);
     };
 
     // exposed outside of the closure
