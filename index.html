@@ -17,7 +17,7 @@
                     <md-card-content>
                         <div class="header">Welcome back!</div>
                         <div class="content">
-                            <img class="profile-img" ng-src="assets/ui/avatar.png"/> <!-- Replace src with {{getUserImage(user)}} for actual .face support -->
+                            <img class="profile-img" ng-src="{{getUserImage(user)}}" fallback-src="assets/ui/avatar.png"/> <!-- Replace src with {{getUserImage(user)}} for actual .face support -->
                             <form layout="column" layout-align="center stretch" ng-submit="signIn()" name="loginForm">
                                 <md-input-container>
                                     <label>User</label>
@@ -208,7 +208,7 @@
                 </md-button>
                 <span flex></span>
                 <div id="clock" layout="column" layout-align="center center">
-                    <span ng-controller="timeController" ng-disabled="true">{{clock| date:format}}</span>
+                    <span ng-controller="timeController">{{clock| date:format}}</span>
                 </div>
             </footer>
         </div>
