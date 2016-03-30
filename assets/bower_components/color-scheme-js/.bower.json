@@ -1,0 +1,15 @@
+{
+  "name": "color-scheme-js",
+  "homepage": "https://github.com/c0bra/color-scheme-js",
+  "version": "0.0.6",
+  "_release": "0.0.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.6",
+    "commit": "3cfe4fc98859954cda07a44588a1583fa62564f5"
+  },
+  "_source": "git://github.com/c0bra/color-scheme-js.git",
+  "_target": "^0.0.6",
+  "_originalSource": "c0bra/color-scheme-js",
+  "_direct": true
+}

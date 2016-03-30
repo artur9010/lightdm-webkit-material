@@ -1,0 +1,35 @@
+{
+  "name": "color-scheme",
+  "version": "0.0.5",
+  "description": "Generate pleasant color schemes",
+  "main": "lib/color-scheme.js",
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script",
+    "prepublish": "cake build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/c0bra/color-scheme-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/c0bra/color-scheme-js/issues"
+  },
+  "keywords": [
+    "color",
+    "scheme",
+    "generator",
+    "random",
+    "picker",
+    "web"
+  ],
+  "author": "Brian Hann",
+  "license": "BSD",
+  "dependencies": {},
+  "devDependencies": {
+    "coffee-script": "",
+    "uglify-js": "",
+    "mocha": "",
+    "chai": "",
+    "which": "^1.0.5"
+  }
+}

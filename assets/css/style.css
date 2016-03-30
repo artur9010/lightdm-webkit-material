@@ -1,5 +1,8 @@
-html, body {
-    height: 100%; width: 100%; overflow: hidden;
+html, body, #wrapper {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: none;
 }
 
 body {
@@ -8,26 +11,31 @@ body {
     -webkit-user-select: none
 }
 
-.card {
-    overflow: hidden;
-    background-color: #ffffff;
-    margin: 125px auto 25px;
-    border-radius: 3px;
-    min-width: 344px;
-    max-width: 344px;
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
 }
 
-.card .header{
+md-card {
+    width: 350px;
+    overflow: auto;
+}
+
+md-select-value {
+    overflow: hidden;
+}
+
+.header {
     width: 100%;
-    height: 30px;
     background-color: #263238;
     color: white;
     text-align: center;
-    padding-top: 10px;
-}
-
-.card .content{
-    padding: 40px;
+    padding: 10px 0;
+    margin-bottom: 15px;
 }
 
 .profile-img {
@@ -37,6 +45,85 @@ body {
     border-radius: 100%;
 }
 
-.mdl-mini-footer{
+footer {
     padding: 4px 10px;
+    background-color: rgba(0, 0, 0, 0.09);
+    color: white;
+}
+footer button.md-button, #clock {
+    font-size: 12px;
+}
+
+ng-cloak {
+    display: none;
+}
+
+#help-button {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.ng-leave {
+    display: none;
+}
+
+@media only screen and (min-width:960px){
+    /* styles for browsers larger than 960px; */
+}
+@media only screen and (min-width:1440px){
+    /* styles for browsers larger than 1440px; */
+}
+@media only screen and (min-width:2000px){
+    md-card {
+        width: 600px;
+    }
+    md-card md-card-content {
+        font-size: 140%;
+    }
+    .header {
+        font-size: 30px;
+    }
+    button.md-button, #clock {
+        padding: 6px 12px;
+        margin: 8px 16px;
+        line-height: 52px;
+    }
+    md-input-container label {
+        font-size: 24px;
+    }
+    .md-button, md-select-value, input, #clock {
+        font-size: 24px !important;
+    }
+    md-input-container [ng-message] {
+        font-size: 20px;
+        line-height: 22px;
+    }
+    .profile-img {
+        width: 182px;
+    }
+    md-input-container {
+        padding: 4px;
+        margin: 26px 0;
+    }
+    md-option {
+        height: 68px;
+    }
+    md-option .md-text {
+        font-size: 24px;
+    }
+}
+@media only screen and (max-device-width:480px){
+    /* styles for mobile browsers smaller than 480px; (iPhone) */
+}
+@media only screen and (device-width:768px){
+    /* default iPad screens */
+}
+/* different techniques for iPad screening */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+    /* For portrait layouts only */
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+    /* For landscape layouts only */
 }

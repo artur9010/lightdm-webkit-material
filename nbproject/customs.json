@@ -1,0 +1,11 @@
+{
+    "elements": {
+        "md-card": {},
+        "md-button": {},
+        "md-input-container": {},
+        "md-card-content": {}
+    },
+    "attributes": {
+        "layout": {}
+    }
+}

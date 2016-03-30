@@ -188,3 +188,9 @@ var _lightdm_mock_get_user = function (username) {
     }
     return user;
 }
+window.show_prompt = function(msg) {
+    console.log(msg);
+};
+window.show_error = function(msg) {
+    console.error(msg);
+};

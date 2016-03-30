@@ -1,0 +1,14 @@
+{
+  "name": "particleground",
+  "homepage": "https://github.com/fallingSnow/particleground",
+  "_release": "1aea2e36b9",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "1aea2e36b97ca939d18f03e9d3bdde229b11569d"
+  },
+  "_source": "git://github.com/fallingSnow/particleground.git",
+  "_target": "*",
+  "_originalSource": "fallingSnow/particleground",
+  "_direct": true
+}
