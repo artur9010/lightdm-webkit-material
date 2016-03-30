@@ -66,6 +66,24 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
                 }
             };
         })
+        .directive('fallbackSrc', function ($mdToast) {
+            var fallbackSrc = {
+                link: function postLink(scope, iElement, iAttrs) {
+                    iElement.bind('error', function () {
+                        var el = angular.element(this);
+                        console.error('Unabled to load image', el.attr("src"));
+                        $mdToast.show(
+                                $mdToast.simple()
+                                .textContent('Unabled to load image "' + el.attr("src") + '"')
+                                .position('top left')
+                                .hideDelay(5000)
+                                );
+                        angular.element(this).attr("src", iAttrs.fallbackSrc);
+                    });
+                }
+            }
+            return fallbackSrc;
+        })
         .factory('backgroundManager', function ($rootScope, settings, angularLoad) {
 
             var factory = {};
@@ -105,7 +123,7 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
                             $rootScope.backgroundStyle = {"background-image": "url(\"" + backgroundPattern.png() + "\")"}
                         })
                     } else if (settings.backgroundEngine === 'particleground') {
-                        
+
                         var scheme = new ColorScheme;
                         var dotColor, lineColor, bgColor;
                         switch (settings['background']) {
@@ -113,71 +131,71 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
                                 var random = Math.floor(Math.random() * (361));
                                 scheme.from_hue(random).scheme('mono').variation('hard');
                                 var colors = scheme.colors();
-                                dotColor = "#"+colors[0];
-                                lineColor = "#"+colors[1];
-                                bgColor = "#"+colors[2];
+                                dotColor = "#" + colors[0];
+                                lineColor = "#" + colors[1];
+                                bgColor = "#" + colors[2];
                                 break;
                             case 'Blues':
                                 scheme.from_hue(240).scheme('mono').variation('hard');
                                 var colors = scheme.colors();
-                                dotColor = "#"+colors[0];
-                                lineColor = "#"+colors[1];
-                                bgColor = "#"+colors[2];
+                                dotColor = "#" + colors[0];
+                                lineColor = "#" + colors[1];
+                                bgColor = "#" + colors[2];
                                 break;
                             case 'Purples':
                                 scheme.from_hue(285).scheme('mono').variation('hard');
                                 var colors = scheme.colors();
-                                dotColor = "#"+colors[0];
-                                lineColor = "#"+colors[1];
-                                bgColor = "#"+colors[2];
+                                dotColor = "#" + colors[0];
+                                lineColor = "#" + colors[1];
+                                bgColor = "#" + colors[2];
                                 break;
                             case 'Oranges':
                                 scheme.from_hue(45).scheme('mono').variation('hard');
                                 var colors = scheme.colors();
-                                dotColor = "#"+colors[0];
-                                lineColor = "#"+colors[1];
-                                bgColor = "#"+colors[2];
+                                dotColor = "#" + colors[0];
+                                lineColor = "#" + colors[1];
+                                bgColor = "#" + colors[2];
                                 break;
                             case 'Reds':
                                 scheme.from_hue(0).scheme('mono').variation('hard');
                                 var colors = scheme.colors();
-                                dotColor = "#"+colors[0];
-                                lineColor = "#"+colors[1];
-                                bgColor = "#"+colors[2];
+                                dotColor = "#" + colors[0];
+                                lineColor = "#" + colors[1];
+                                bgColor = "#" + colors[2];
                                 break;
                             case 'YlOrRd':
                                 var colors = scheme.from_hue(60).scheme('mono').variation('hard').colors();
-                                dotColor = "#"+colors[Math.floor(Math.random() * (5))];
+                                dotColor = "#" + colors[Math.floor(Math.random() * (5))];
                                 var colors = scheme.from_hue(45).scheme('mono').variation('hard').colors();
-                                lineColor = "#"+colors[Math.floor(Math.random() * (5))];
+                                lineColor = "#" + colors[Math.floor(Math.random() * (5))];
                                 var colors = scheme.from_hue(360).scheme('mono').variation('hard').colors();
-                                bgColor = "#"+colors[Math.floor(Math.random() * (5))];
+                                bgColor = "#" + colors[Math.floor(Math.random() * (5))];
                                 break;
                             case 'YlGnBu':
                                 var colors = scheme.from_hue(60).scheme('mono').variation('hard').colors();
-                                dotColor = "#"+colors[Math.floor(Math.random() * (5))];
+                                dotColor = "#" + colors[Math.floor(Math.random() * (5))];
                                 var colors = scheme.from_hue(120).scheme('mono').variation('hard').colors();
-                                lineColor = "#"+colors[Math.floor(Math.random() * (5))];
+                                lineColor = "#" + colors[Math.floor(Math.random() * (5))];
                                 var colors = scheme.from_hue(240).scheme('mono').variation('hard').colors();
-                                bgColor = "#"+colors[Math.floor(Math.random() * (5))];
+                                bgColor = "#" + colors[Math.floor(Math.random() * (5))];
                                 break;
                             case 'PuOr':
                                 var colors = scheme.from_hue(45).scheme('mono').variation('hard').colors();
-                                dotColor = "#"+colors[Math.floor(Math.random() * (5))];
-                                lineColor = "#"+colors[Math.floor(Math.random() * (5))];
+                                dotColor = "#" + colors[Math.floor(Math.random() * (5))];
+                                lineColor = "#" + colors[Math.floor(Math.random() * (5))];
                                 var colors = scheme.from_hue(285).scheme('mono').variation('hard').colors();
-                                bgColor = "#"+colors[Math.floor(Math.random() * (5))];
+                                bgColor = "#" + colors[Math.floor(Math.random() * (5))];
                                 break;
                             case 'YlOrBr':
                                 var colors = scheme.from_hue(60).scheme('mono').variation('hard').colors();
-                                dotColor = "#"+colors[Math.floor(Math.random() * (5))];
+                                dotColor = "#" + colors[Math.floor(Math.random() * (5))];
                                 var colors = scheme.from_hue(45).scheme('mono').variation('hard').colors();
-                                lineColor = "#"+colors[Math.floor(Math.random() * (5))];
+                                lineColor = "#" + colors[Math.floor(Math.random() * (5))];
                                 var colors = scheme.from_hue(45).scheme('mono').variation('pastel').colors();
-                                bgColor = "#"+colors[Math.floor(Math.random() * (5))];
+                                bgColor = "#" + colors[Math.floor(Math.random() * (5))];
                                 break;
                         }
-                        
+
                         $rootScope.$applyAsync(function () {
                             $rootScope.backgroundStyle = {"background-image": 'none', "background-color": bgColor};
                         });
@@ -185,7 +203,7 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
                             dotColor: dotColor,
                             lineColor: lineColor,
                             density: settings.particlegroundDensity,
-                            proximity: settings.particlegroundDensity / 90
+                            proximity: settings.particlegroundDensity / 70
                         });
                     }
                 });
@@ -216,7 +234,7 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
             if (ls.getItem("settings.particlegroundDensity")) {
                 factory.particlegroundDensity = parseInt(ls.getItem("settings.particlegroundDensity"));
             } else {
-                factory.particlegroundDensity = 20000;
+                factory.particlegroundDensity = 40000;
             }
             if (ls.getItem("settings.background")) {
                 factory.background = ls.getItem("settings.background");
@@ -318,11 +336,11 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
 
             var tick = function () {
                 $scope.clock = Date.now() // get the current time
-                $timeout(tick, $scope.tickInterval); // reset the timer
+                $scope.$digest();
+                setTimeout(tick, $scope.tickInterval); // reset the timer
             };
 
-            // Start the timer
-            $timeout(tick, $scope.tickInterval);
+            setTimeout(tick, $scope.tickInterval); // Start the timer
         })
         .run(function ($rootScope, backgroundManager, settings) {
             backgroundManager.update();
