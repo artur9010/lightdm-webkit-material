@@ -61,6 +61,8 @@
 
         options = extend({}, window[pluginName].defaults, options);
 
+        options.proximity = Math.pow(options.proximity, 2);
+
         /**
          * Init
          */
@@ -264,10 +266,12 @@
         /**
          * Draw particle
          */
+        var halfParticleRadius = options.particleRadius / 2;
+        var doublePi = Math.PI * 2;
         Particle.prototype.draw = function () {
             // Draw circle
             ctx.beginPath();
-            ctx.arc(this.position.x + this.parallaxOffsetX, this.position.y + this.parallaxOffsetY, options.particleRadius / 2, 0, Math.PI * 2, true);
+            ctx.arc(this.position.x + this.parallaxOffsetX, this.position.y + this.parallaxOffsetY, halfParticleRadius, 0, doublePi, true);
             ctx.closePath();
             ctx.fill();
 
@@ -281,7 +285,7 @@
                 // Pythagorus theorum to get distance between two points
                 var a = this.position.x - p2.position.x;
                 var b = this.position.y - p2.position.y;
-                var dist = Math.sqrt((a * a) + (b * b)).toFixed(2);
+                var dist = Math.pow(a, 2) + Math.pow(b, 2);
 
                 // If the two particles are in proximity, join them
                 if (dist < options.proximity) {
