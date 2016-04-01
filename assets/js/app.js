@@ -78,7 +78,7 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
                                 .position('top left')
                                 .hideDelay(5000)
                                 );
-                        angular.element(this).attr("src", iAttrs.fallbackSrc);
+                        el.attr("src", iAttrs.fallbackSrc);
                     });
                 }
             }
@@ -335,8 +335,9 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
             $scope.tickInterval = 1000 //ms
 
             var tick = function () {
-                $scope.clock = Date.now() // get the current time
-                $scope.$digest();
+                $scope.clock = Date.now(); // get the current time
+                if (!$scope.$$phase)
+                    $scope.$digest();
                 setTimeout(tick, $scope.tickInterval); // reset the timer
             };
 
