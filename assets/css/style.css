@@ -40,6 +40,7 @@ md-select-value {
 
 .profile-img {
     width: 96px;
+    height: 96px;
     margin: 0 auto 40px;
     display: block;
     border-radius: 100%;
@@ -66,6 +67,12 @@ ng-cloak {
 
 .ng-leave {
     display: none;
+}
+
+.hint {
+    font-size: 10px;
+    color: #929292;
+    margin-top: 5px;
 }
 
 @media only screen and (min-width:960px){
@@ -101,6 +108,7 @@ ng-cloak {
     }
     .profile-img {
         width: 182px;
+        height: 182px;
     }
     md-input-container {
         padding: 4px;
@@ -111,6 +119,9 @@ ng-cloak {
     }
     md-option .md-text {
         font-size: 24px;
+    }
+    .hint {
+        font-size: 14px;
     }
 }
 @media only screen and (max-device-width:480px){

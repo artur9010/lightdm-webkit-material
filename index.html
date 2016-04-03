@@ -4,13 +4,12 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="assets/bower_components/angular-material/angular-material.css">
         <link rel="stylesheet" href="assets/bower_components/animate.css/animate.min.css">
-        <!--<link rel="stylesheet" href="assets/css/angular-animate.css">-->
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     </head>
     <body ng-app="webkitMaterial" ng-style="backgroundStyle">
         <div class="ng-cloak" id="wrapper" layout="column" layout-align="center stretch">
-            <md-button id="help-button" class="md-icon-button" aria-label="Help"><i class="fa fa-question-circle" ng-click="$root.card = 'help'"></i></md-button>
+            <md-button id="help-button" class="md-icon-button" aria-label="Help" ng-click="$root.card = 'help'"><i class="fa fa-question-circle"></i></md-button>
             <main layout="column" layout-align="center center" flex ng-switch on="$root.card">
                 <!-- Login card -->
                 <md-card id="login" ng-class="animation" ng-style="animationDuration" ng-controller="loginController" ng-switch-default>
@@ -29,9 +28,9 @@
                                 </md-input-container>
                                 <md-input-container>
                                     <label><i class="fa fa-lock"></i> Password</label>
-                                    <input type="password" name="password" ng-model="password" id="pass" required autofocus>
+                                    <input type="password" name="password" ng-model="password" id="pass" autofocus>
                                     <div ng-messages="loginForm.password.$error">
-                                        <div ng-message="corrent">
+                                        <div ng-message="correct">
                                             Incorrect password
                                         </div>
                                     </div>
@@ -44,7 +43,8 @@
                                         </md-option>
                                     </md-select>
                                 </md-input-container>
-                                <md-button type="submit" ng-disabled="state == 'signingin'"><i class="fa fa-sign-in"></i> Sign in</md-button>
+                                <md-button type="submit" ng-hide="state == 'signingin'" ng-disabled="state == 'signingin'"><i class="fa fa-sign-in"></i> Sign in</md-button>
+                                <md-button type="submit" ng-show="state == 'signingin'" ng-disabled="true"><i class="fa fa-circle-o-notch fa-spin" style="padding: 1px;"></i> Signing in...</md-button>
                             </form>
                         </div>
                     </md-card-content>
@@ -63,10 +63,12 @@
                             </md-input-container>
                             <md-input-container>
                                 <label for="settings-backgroundEngine"><i class="fa fa-gears"></i> Background Engine</label>
-                                <md-select id="settings-background" ng-model="settings.backgroundEngine">
+                                <md-select id="settings-background" name="backgroundEngine" ng-model="settings.backgroundEngine">
                                     <md-option value="trianglify">Trianglify</md-option>
-                                    <md-option value="particleground" ng-disabled="false">Particleground</md-option>
+                                    <md-option value="particleground">Particleground</md-option>
+                                    <md-option value="image">Image</md-option>
                                 </md-select>
+                                <div class="hint" ng-if="settings.backgroundEngine == 'image'">Background image should be located at "/var/lib/AccountsService/wallpapers/lightdm-webkit.jpg" in jpeg format.</div>
                             </md-input-container>
                             <md-input-container ng-show="settings.backgroundEngine == 'particleground'">
                                 <label for="settings-particleground-density"><i class="fa fa-share-alt"></i> Density <small>(<i class="fa fa-arrow-down"></i> more <i class="fa fa-arrow-up"></i> less)</small></label>
@@ -77,7 +79,7 @@
                                     </div>
                                 </div>
                             </md-input-container>
-                            <md-input-container>
+                            <md-input-container ng-if="settings.backgroundEngine != 'image'">
                                 <label for="settings-background"><i class="fa fa-desktop"></i> Background Color Scheme</label>
                                 <md-select id="settings-background" ng-model="settings.background">
                                     <md-option value="random">Random (default)</md-option>
@@ -177,10 +179,14 @@
                     <div class="header">Help</div>
                     <md-card-content class="content">
                         <b>I found a bug/mistake? Where can I report it?</b>
+                        <br/>
+                        <small><i>https://github.com/artur9010/lightdm-webkit-material/issues</i></small>
                         <br/><br/>
-                        <i>https://github.com/artur9010/lightdm-webkit-material/issues</i>
+                        <b>Setting a profile icon</b>
+                        <br/>
+                        <small>See <i>https://github.com/Antergos/lightdm-webkit2-greeter/tree/master/themes/antergos#user-icons-management</i> for more info.</small>
                         <br/><br/>
-                        <small>Crafted with <i class="fa fa-heart"></i> in Poland and the USA.</small>
+                        <div style="text-align: center;"><small>Crafted with <i class="fa fa-heart"></i> in Poland and the USA.</small></div>
                     </md-card-content>
                     <md-card-actions layout="row" layout-align="space-around center">
                         <md-button flex ng-click="$root.card = 'login'">Ok</md-button>

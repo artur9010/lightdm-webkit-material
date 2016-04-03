@@ -2,7 +2,7 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
         .config(function () {
             console.debug("webkit-material loading...");
         })
-        .controller('loginController', function ($scope, $filter, $mdToast) {
+        .controller('loginController', function ($scope, $filter, $mdToast, settings, backgroundManager) {
 
             var ls = localStorage;
 
@@ -74,7 +74,7 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
                         console.error('Unabled to load image', el.attr("src"));
                         $mdToast.show(
                                 $mdToast.simple()
-                                .textContent('Unabled to load image "' + el.attr("src") + '"')
+                                .textContent('Unabled to load image "' + el.attr("src") + '". Click help (upper right) for more info.')
                                 .position('top left')
                                 .hideDelay(5000)
                                 );
@@ -84,7 +84,7 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
             }
             return fallbackSrc;
         })
-        .factory('backgroundManager', function ($rootScope, settings, angularLoad) {
+        .factory('backgroundManager', function ($rootScope, $http, $mdToast, settings, angularLoad) {
 
             var factory = {};
 
@@ -205,6 +205,23 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
                             density: settings.particlegroundDensity,
                             proximity: settings.particlegroundDensity / 70
                         });
+                    } else if (settings.backgroundEngine === 'image') {
+                        var imagePath = '/var/lib/AccountsService/wallpapers/lightdm-webkit.jpg';
+                            $rootScope.$applyAsync(function () {
+                                $rootScope.backgroundStyle = {"background-image": 'url('+imagePath+')', "background-color": 'none'};
+                            });
+                        $http({
+                            method: 'GET',
+                            url: imagePath
+                        }).then(function successCallback(response) {
+                            factory.imageDestinationValid = true;
+                        }, function errorCallback(response) {
+                            factory.imageDestinationValid = false;
+                            $rootScope.$applyAsync(function () {
+                                $rootScope.backgroundStyle = {"background-image": "url('assets/ui/no-mans-sky.jpg')", "background-color": 'none'};
+                            });
+                            console.error('Unable to load background image', imagePath);
+                        });
                     }
                 });
             };
@@ -319,8 +336,10 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
                 $rootScope.animationDuration = {'animationDuration': settings.animationDuration + 'ms'};
                 ls.setItem("settings.animationDuration", $scope.settings.animationDuration);
             });
+
+            $scope.user = localStorage.getItem("settings.previousUser");
         })
-        .controller('timeController', function ($scope, $timeout, settings) {
+        .controller('timeController', function ($scope, settings) {
 
             $scope.$watch(function () {
                 return settings.clockFormat;
