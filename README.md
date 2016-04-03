@@ -29,6 +29,7 @@ I created this for use on Arch Linux, so it only has the basic features of:
 - Select your language
 - 3 different types of background (trianglify, particleground, and image)
 - Option to select keyboard layout (eq. pl_PL for Polish keyboard, en_US for English)
+- HiDpi screen support (2000px in width or more)
 - And the most important thing, A CLOCK WITH SECONDS!!!
 
 ### How to install
@@ -76,6 +77,6 @@ or
 
 
 ### License
-This work is free. You can redistribute it and/or modify it under the terms of the WTFPL (Do What The Fuck You Want To Public License), Version 2, as published by Sam Hocevar. See http://www.wtfpl.net/ for more details..<br>
-Default avatar: http://www.designshock.com/flat_character/
+This work is free. You can redistribute it and/or modify it under the terms of the WTFPL (Do What The Fuck You Want To Public License), Version 2, as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.<br>
+Default avatar: http://www.designshock.com/flat_character/<br>
 Fallback image background: No Man's Sky
