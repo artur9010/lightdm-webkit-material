@@ -6,9 +6,13 @@ Arch Linux users can find it in the AUR: [`lightdm-webkit-theme-material-git`](h
 
 ### Screenshots
 
-![](http://i.imgur.com/ztW6raQ.jpg)
-![](http://i.imgur.com/yUcRxMu.jpg)
-![](http://i.imgur.com/C887U4R.jpg)
+![](https://cdn.rawgit.com/FallingSnow/lightdm-webkit-material/master/assets/screenshots/default.png)
+![](https://cdn.rawgit.com/FallingSnow/lightdm-webkit-material/master/assets/screenshots/shutdown-dialog.png)
+![](https://cdn.rawgit.com/FallingSnow/lightdm-webkit-material/master/assets/screenshots/settings.png)
+![](https://cdn.rawgit.com/FallingSnow/lightdm-webkit-material/master/assets/screenshots/particleground-background.png)
+![](https://cdn.rawgit.com/FallingSnow/lightdm-webkit-material/master/assets/screenshots/particleground-background-2.png)
+![](https://cdn.rawgit.com/FallingSnow/lightdm-webkit-material/master/assets/screenshots/custom-background-image.png)
+![](https://cdn.rawgit.com/FallingSnow/lightdm-webkit-material/master/assets/screenshots/custom-background-and-profile-image.png)
 
 ### Features
 
@@ -23,7 +27,9 @@ I created this for use on Arch Linux, so it only has the basic features of:
 - Hibernate
 - Select session (GNOME, KDE, Xfce or other installed DE)
 - Select your language
+- 3 different types of background (trianglify, particleground, and image)
 - Option to select keyboard layout (eq. pl_PL for Polish keyboard, en_US for English)
+- HiDpi screen support (2000px in width or more)
 - And the most important thing, A CLOCK WITH SECONDS!!!
 
 ### How to install
@@ -34,7 +40,7 @@ Instructions will differ for every platform:
 2. In the terminal, `cd` to `/usr/share/lightdm-webkit/themes/`
 3. Clone this repository
   - Type `git clone https://github.com/artur9010/lightdm-webkit-material.git`
-  - or, if you want to use devdevelopment version, use `git clone -b dev https://github.com/artur9010/lightdm-webkit-material.git`
+  - or, if you want to use development version, use `git clone -b dev https://github.com/artur9010/lightdm-webkit-material.git`
 4. Enable the theme in your `/etc/lightdm/lightdm-webkit2-greeter.conf`
   - Search for `greeter` section
   - Set `webkit-theme` to `lightdm-webkit-material`
@@ -59,13 +65,18 @@ If you installed theme using AUR.
 
 There are a couple of methods you can use to set your user picture in LightDM:
 
-- Put a `jpg` of your face in your home directory as a file called `.face`
+- ~~Put a `jpg` of your face in your home directory as a file called `.face`~~
 
 or
 
-- Add `Icon=/path/to/your/face.png` to the bottom of `/var/lib/AccountsService/users/<youraccountname>`
+- Add `Icon=/var/lib/AccountsService/icons/<youraccountname>` to the bottom of `/var/lib/AccountsService/users/<youraccountname>` and place a profile image at `/var/lib/AccountsService/icons/<youraccountname>`
+
+### Setting a custom background image
+
+- Put a `jpg` at `/var/lib/AccountsService/wallpapers/lightdm-webkit.jpg` (*You may need to create the wallpapers directory*) and set background engine to image in the settings
 
 
 ### License
-This work is free. You can redistribute it and/or modify it under the terms of the WTFPL (Do What The Fuck You Want To Public License), Version 2, as published by Sam Hocevar. See http://www.wtfpl.net/ for more details..<br>
-Default avatar: http://www.designshock.com/flat_character/
+This work is free. You can redistribute it and/or modify it under the terms of the WTFPL (Do What The Fuck You Want To Public License), Version 2, as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.<br>
+Default avatar: http://www.designshock.com/flat_character/<br>
+Fallback image background: No Man's Sky

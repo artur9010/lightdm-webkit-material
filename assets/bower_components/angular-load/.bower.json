@@ -1,0 +1,29 @@
+{
+  "name": "angular-load",
+  "description": "Dynamically load scripts and css stylesheets in your Angular.JS app",
+  "author": "Uri Shaked",
+  "license": "MIT",
+  "homepage": "http://github.com/urish/angular-load",
+  "main": "./angular-load.js",
+  "dependencies": {
+    "angular": ">=1.0.0 <1.6.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.4.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/urish/angular-load.git"
+  },
+  "version": "0.4.1",
+  "_release": "0.4.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.4.1",
+    "commit": "b9d007064c434e81fd352e2675851c279f1beff9"
+  },
+  "_source": "git://github.com/urish/angular-load.git",
+  "_target": "^0.4.1",
+  "_originalSource": "angular-load",
+  "_direct": true
+}
