@@ -207,9 +207,9 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad', 'ngStorage'])
                         });
                     } else if (settings.backgroundEngine === 'image') {
                         var imagePath = '/var/lib/AccountsService/wallpapers/lightdm-webkit.jpg';
-                            $rootScope.$applyAsync(function () {
-                                $rootScope.backgroundStyle = {"background-image": 'url('+imagePath+')', "background-color": 'none'};
-                            });
+                        $rootScope.$applyAsync(function () {
+                            $rootScope.backgroundStyle = {"background-image": 'url(' + imagePath + ')', "background-color": 'none'};
+                        });
                         $http({
                             method: 'GET',
                             url: imagePath
@@ -235,13 +235,18 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad', 'ngStorage'])
             var factory = {};
 
             // Load possible languages
-            factory.languages = lightdm.languages;
+            if (lightdm.languages)
+                factory.languages = lightdm.languages;
 
             // Get previous language, background, and clockFormat
             if (ls["settings.language"]) {
                 factory.language = ls["settings.language"];
             } else {
-                factory.language = lightdm.default_language.code;
+                try {
+                    factory.language = lightdm.default_language.code;
+                } catch (e) {
+                    console.error('Could not load lightdm default language.');
+                }
             }
             if (ls["settings.backgroundEngine"]) {
                 factory.backgroundEngine = ls["settings.backgroundEngine"];
