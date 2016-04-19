@@ -42,7 +42,6 @@
             .provider('$sessionStorage', _storageProvider('sessionStorage'));
 
     function _storageProvider(storageType) {
-        storageType = 'meep'
         return function () {
             var storageKeyPrefix = 'ngStorage-';
 

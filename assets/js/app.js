@@ -2,6 +2,9 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad', 'ngStorage'])
         .config(function () {
             console.debug("webkit-material loading...");
         })
+        .run(function ($rootScope) {
+            $rootScope.ldm = lightdm;
+        })
         .controller('loginController', function ($scope, $filter, $mdToast, $localStorage, settings, backgroundManager) {
 
             var ls = $localStorage;

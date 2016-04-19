@@ -1,0 +1,14 @@
+{
+  "name": "lightdm-webkit-theme-developer-helper",
+  "homepage": "https://github.com/omgmog/lightdm-webkit-theme-developer-helper",
+  "_release": "0760d6df75",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "0760d6df752d23f05e82befd565c2d0aa7ea49a6"
+  },
+  "_source": "https://github.com/omgmog/lightdm-webkit-theme-developer-helper.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/omgmog/lightdm-webkit-theme-developer-helper.git",
+  "_direct": true
+}
