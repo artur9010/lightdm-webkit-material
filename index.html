@@ -66,8 +66,10 @@
                                 <md-select id="settings-background" name="backgroundEngine" ng-model="settings.backgroundEngine">
                                     <md-option value="trianglify">Trianglify</md-option>
                                     <md-option value="particleground">Particleground</md-option>
+                                    <md-option value="random-image">Random Image</md-option>
                                     <md-option value="image">Image</md-option>
                                 </md-select>
+                                <div class="hint" ng-if="settings.backgroundEngine == 'random-image'">Background images should be located in "/var/lib/AccountsService/wallpapers" in png or jpeg format.</div>
                                 <div class="hint" ng-if="settings.backgroundEngine == 'image'">Background image should be located at "/var/lib/AccountsService/wallpapers/lightdm-webkit.jpg" in jpeg format.</div>
                             </md-input-container>
                             <md-input-container ng-show="settings.backgroundEngine == 'particleground'">
@@ -79,7 +81,7 @@
                                     </div>
                                 </div>
                             </md-input-container>
-                            <md-input-container ng-if="settings.backgroundEngine != 'image'">
+                            <md-input-container ng-if="settings.backgroundEngine != 'image' || settings.backgroundEngine != 'random-image'">
                                 <label for="settings-background"><i class="fa fa-desktop"></i> Background Color Scheme</label>
                                 <md-select id="settings-background" ng-model="settings.background">
                                     <md-option value="random">Random (default)</md-option>

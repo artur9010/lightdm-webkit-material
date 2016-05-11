@@ -114,6 +114,7 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
                 }
 
                 factory.loadEngine(function () {
+                    var imagePath = 'assets/ui/no-mans-sky.jpg';
                     if (settings.backgroundEngine === 'trianglify') {
                         var backgroundHeight = Math.max($(document).height(), $(window).height()) * 0.89;
                         var backgroundWidth = Math.max($(document).width(), $(window).width()) * 0.89;
@@ -205,11 +206,32 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
                             density: settings.particlegroundDensity,
                             proximity: settings.particlegroundDensity / 70
                         });
+                    } else if (settings.backgroundEngine === 'random-image') {
+                        var imageDir = config.get_str('branding', 'background_images');
+                        var imagesLoaded = false;
+                        if (imageDir == null) {imageDir = config.get_str('greeter', 'background_images');}
+                        if (imageDir != null) {
+                            var imagePaths = greeterutil.dirlist(imageDir);
+                            if (imagePaths != null) {
+                                if (imagePaths.length > 0) {
+                                    imagesLoaded = true;
+                                    var imageIndex = Math.floor(Math.random() * imagePaths.length);
+                                    imagePath = imagePaths[imageIndex];
+                                }
+                            }
+                            if (!imagesLoaded) {
+                                console.error('Non-existant or missing background images in', imageDir);
+                            }
+                        } else {
+                            console.error('background_images variable unset');
+                        }
                     } else if (settings.backgroundEngine === 'image') {
-                        var imagePath = '/var/lib/AccountsService/wallpapers/lightdm-webkit.jpg';
-                            $rootScope.$applyAsync(function () {
-                                $rootScope.backgroundStyle = {"background-image": 'url('+imagePath+')', "background-color": 'none'};
-                            });
+                        imagePath = '/var/lib/AccountsService/wallpapers/lightdm-webkit.jpg';
+                    }
+                    if (settings.backgroundEngine === 'random-image' || settings.backgroundEngine === 'image') {
+                        $rootScope.$applyAsync(function () {
+                            $rootScope.backgroundStyle = {"background-image": 'url('+imagePath+')', "background-color": 'none'};
+                        });
                         $http({
                             method: 'GET',
                             url: imagePath
