@@ -6,13 +6,13 @@ Arch Linux users can find it in the AUR: [`lightdm-webkit-theme-material-git`](h
 
 ### Screenshots
 
-![](https://cdn.rawgit.com/FallingSnow/lightdm-webkit-material/master/assets/screenshots/default.png)
-![](https://cdn.rawgit.com/FallingSnow/lightdm-webkit-material/master/assets/screenshots/shutdown-dialog.png)
-![](https://cdn.rawgit.com/FallingSnow/lightdm-webkit-material/master/assets/screenshots/settings.png)
-![](https://cdn.rawgit.com/FallingSnow/lightdm-webkit-material/master/assets/screenshots/particleground-background.png)
-![](https://cdn.rawgit.com/FallingSnow/lightdm-webkit-material/master/assets/screenshots/particleground-background-2.png)
-![](https://cdn.rawgit.com/FallingSnow/lightdm-webkit-material/master/assets/screenshots/custom-background-image.png)
-![](https://cdn.rawgit.com/FallingSnow/lightdm-webkit-material/master/assets/screenshots/custom-background-and-profile-image.png)
+![](https://cdn.rawgit.com/artur9010/lightdm-webkit-material/screenshoots/default.png)
+![](https://cdn.rawgit.com/artur9010/lightdm-webkit-material/screenshoots/shutdown-dialog.png)
+![](https://cdn.rawgit.com/artur9010/lightdm-webkit-material/screenshoots/settings.png)
+![](https://cdn.rawgit.com/artur9010/lightdm-webkit-material/screenshoots/particleground-background.png)
+![](https://cdn.rawgit.com/artur9010/lightdm-webkit-material/screenshoots/particleground-background-2.png)
+![](https://cdn.rawgit.com/artur9010/lightdm-webkit-material/screenshoots/custom-background-image.png)
+![](https://cdn.rawgit.com/artur9010/lightdm-webkit-material/screenshoots/custom-background-and-profile-image.png)
 
 ### Features
 
@@ -40,7 +40,6 @@ Instructions will differ for every platform:
 2. In the terminal, `cd` to `/usr/share/lightdm-webkit/themes/`
 3. Clone this repository
   - Type `git clone https://github.com/artur9010/lightdm-webkit-material.git`
-  - or, if you want to use development version, use `git clone -b dev https://github.com/artur9010/lightdm-webkit-material.git`
 4. Enable the theme in your `/etc/lightdm/lightdm-webkit2-greeter.conf`
   - Search for `greeter` section
   - Set `webkit-theme` to `lightdm-webkit-material`
@@ -78,6 +77,10 @@ or
 ### Setting multiple custom background images to pick from
 
 - Put a `jpg` or a `png` in `/var/lib/AccountsService/wallpapers` or in a directory specified by the `background_images` variable in your `/etc/lightdm/lightdm-webkit2-greeter.conf` (either the `greeter` or the `branding` section) and set the background engine to random image in the settings.
+
+### Tips
+#### Lock screen
+- Type `dm-tool lock`
 
 ### License
 This work is free. You can redistribute it and/or modify it under the terms of the WTFPL (Do What The Fuck You Want To Public License), Version 2, as published by Sam Hocevar. See http://www.wtfpl.net/ for more details.<br>
