@@ -39,10 +39,10 @@ Instructions will differ for every platform:
 1. Install and enable `lightdm` and `lightdm-webkit2-greeter`
 2. In the terminal, `cd` to `/usr/share/lightdm-webkit/themes/`
 3. Clone this repository
-  - Type `git clone https://github.com/artur9010/lightdm-webkit-material.git`
+  - Type `git clone https://github.com/artur9010/lightdm-webkit-material.git material`
 4. Enable the theme in your `/etc/lightdm/lightdm-webkit2-greeter.conf`
   - Search for `greeter` section
-  - Set `webkit-theme` to `lightdm-webkit-material`
+  - Set `webkit-theme` to `material`
   
 ### How to install (Arch Linux users)
 I can tell you how to install it on Arch Linux:
