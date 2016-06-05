@@ -1,23 +1,26 @@
-angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
+angular.module('webkitMaterial', ['ngMaterial', 'angularLoad', 'ngStorage'])
         .config(function () {
             console.debug("webkit-material loading...");
         })
-        .controller('loginController', function ($scope, $filter, $mdToast, settings, backgroundManager) {
+        .run(function ($rootScope) {
+            $rootScope.ldm = lightdm;
+        })
+        .controller('loginController', function ($scope, $filter, $mdToast, $localStorage, settings, backgroundManager) {
 
-            var ls = localStorage;
+            var ls = $localStorage;
 
             // Load possible users and sessions
             $scope.users = lightdm.users;
             $scope.sessions = lightdm.sessions;
 
             // Get previous user and session
-            if (ls.getItem("settings.previousUser")) {
-                $scope.user = ls.getItem("settings.previousUser");
+            if (ls["settings.previousUser"]) {
+                $scope.user = ls["settings.previousUser"];
             } else {
                 $scope.user = lightdm.users[0].name;
             }
-            if (ls.getItem("settings.previousSession")) {
-                $scope.session = ls.getItem("settings.previousSession");
+            if (ls["settings.previousSession"]) {
+                $scope.session = ls["settings.previousSession"];
             } else {
                 $scope.session = lightdm.sessions[0].key;
             }
@@ -26,7 +29,7 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
             $scope.$watch('user', function (current, previous) {
                 if (typeof current === 'undefined')
                     return;
-                ls.setItem("settings.previousUser", $scope.user);
+                ls["settings.previousUser"] = $scope.user;
                 if (lightdm._username)
                     lightdm.cancel_authentication();
                 lightdm.start_authentication($scope.user);
@@ -34,7 +37,7 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
             $scope.$watch('session', function (current) {
                 if (typeof current === 'undefined')
                     return;
-                ls.setItem("settings.previousSession", $scope.session);
+                ls["settings.previousSession"] = $scope.session;
             });
 
             $scope.getUserImage = function (user) {
@@ -229,8 +232,9 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
                         imagePath = '/var/lib/AccountsService/wallpapers/lightdm-webkit.jpg';
                     }
                     if (settings.backgroundEngine === 'random-image' || settings.backgroundEngine === 'image') {
+                        var imagePath = '/var/lib/AccountsService/wallpapers/lightdm-webkit.jpg';
                         $rootScope.$applyAsync(function () {
-                            $rootScope.backgroundStyle = {"background-image": 'url('+imagePath+')', "background-color": 'none'};
+                            $rootScope.backgroundStyle = {"background-image": 'url(' + imagePath + ')', "background-color": 'none'};
                         });
                         $http({
                             method: 'GET',
@@ -250,48 +254,53 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
 
             return factory;
         })
-        .factory('settings', function () {
+        .factory('settings', function ($localStorage) {
 
-            var ls = localStorage;
+            var ls = $localStorage;
 
             var factory = {};
 
             // Load possible languages
-            factory.languages = lightdm.languages;
+            if (lightdm.languages)
+                factory.languages = lightdm.languages;
 
             // Get previous language, background, and clockFormat
-            if (ls.getItem("settings.language")) {
-                factory.language = ls.getItem("settings.language");
+            if (ls["settings.language"]) {
+                factory.language = ls["settings.language"];
             } else {
-                factory.language = lightdm.default_language.code;
+                try {
+                    factory.language = lightdm.default_language.code;
+                } catch (e) {
+                    console.error('Could not load lightdm default language.');
+                }
             }
-            if (ls.getItem("settings.backgroundEngine")) {
-                factory.backgroundEngine = ls.getItem("settings.backgroundEngine");
+            if (ls["settings.backgroundEngine"]) {
+                factory.backgroundEngine = ls["settings.backgroundEngine"];
             } else {
                 factory.backgroundEngine = 'trianglify';
             }
-            if (ls.getItem("settings.particlegroundDensity")) {
-                factory.particlegroundDensity = parseInt(ls.getItem("settings.particlegroundDensity"));
+            if (ls["settings.particlegroundDensity"]) {
+                factory.particlegroundDensity = parseInt(ls["settings.particlegroundDensity"]);
             } else {
                 factory.particlegroundDensity = 40000;
             }
-            if (ls.getItem("settings.background")) {
-                factory.background = ls.getItem("settings.background");
+            if (ls["settings.background"]) {
+                factory.background = ls["settings.background"];
             } else {
                 factory.background = 'random';
             }
-            if (ls.getItem("settings.clockFormat")) {
-                factory.clockFormat = ls.getItem("settings.clockFormat");
+            if (ls["settings.clockFormat"]) {
+                factory.clockFormat = ls["settings.clockFormat"];
             } else {
                 factory.clockFormat = 'H:mm:ss';
             }
-            if (ls.getItem("settings.animation")) {
-                factory.animation = ls.getItem("settings.animation");
+            if (ls["settings.animation"]) {
+                factory.animation = ls["settings.animation"];
             } else {
                 factory.animation = 'fadeIn';
             }
-            if (ls.getItem("settings.animationDuration")) {
-                factory.animationDuration = parseInt(ls.getItem("settings.animationDuration"));
+            if (ls["settings.animationDuration"]) {
+                factory.animationDuration = parseInt(ls["settings.animationDuration"]);
             } else {
                 factory.animationDuration = 1000;
             }
@@ -311,9 +320,9 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
                         });
             };
         })
-        .controller('settingsController', function ($rootScope, $scope, settings, backgroundManager) {
+        .controller('settingsController', function ($rootScope, $scope, $localStorage, settings, backgroundManager) {
 
-            var ls = localStorage;
+            var ls = $localStorage;
 
             $scope.settings = settings;
 
@@ -321,45 +330,45 @@ angular.module('webkitMaterial', ['ngMaterial', 'angularLoad'])
             $scope.$watch('settings.language', function (current, previous) {
                 if (typeof current === 'undefined' || current === previous)
                     return;
-                ls.setItem("settings.language", $scope.settings.language);
+                ls["settings.language"] = $scope.settings.language;
             });
             $scope.$watch('settings.backgroundEngine', function (current, previous) {
                 if (typeof current === 'undefined' || current === previous)
                     return;
-                ls.setItem("settings.backgroundEngine", $scope.settings.backgroundEngine);
+                ls["settings.backgroundEngine"] = $scope.settings.backgroundEngine;
                 backgroundManager.update();
             });
             $scope.$watch('settings.particlegroundDensity', function (current, previous) {
                 if (typeof current === 'undefined' || current === previous)
                     return;
-                ls.setItem("settings.particlegroundDensity", $scope.settings.particlegroundDensity);
+                ls["settings.particlegroundDensity"] = $scope.settings.particlegroundDensity;
                 backgroundManager.update();
             });
             $scope.$watch('settings.background', function (current, previous) {
                 if (typeof current === 'undefined' || current === previous)
                     return;
-                ls.setItem("settings.background", $scope.settings.background);
+                ls["settings.background"] = $scope.settings.background;
                 backgroundManager.update();
             });
             $scope.$watch('settings.clockFormat', function (current, previous) {
                 if (typeof current === 'undefined' || current === previous)
                     return;
-                ls.setItem("settings.clockFormat", $scope.settings.clockFormat);
+                ls["settings.clockFormat"] = $scope.settings.clockFormat;
             });
             $scope.$watch('settings.animation', function (current, previous) {
                 if (typeof current === 'undefined' || current === previous)
                     return;
                 $rootScope.animation = settings.animation;
-                ls.setItem("settings.animation", $scope.settings.animation);
+                ls["settings.animation"] = $scope.settings.animation;
             });
             $scope.$watch('settings.animationDuration', function (current, previous) {
                 if (typeof current === 'undefined' || current === previous)
                     return;
                 $rootScope.animationDuration = {'animationDuration': settings.animationDuration + 'ms'};
-                ls.setItem("settings.animationDuration", $scope.settings.animationDuration);
+                ls["settings.animationDuration"] = $scope.settings.animationDuration;
             });
 
-            $scope.user = localStorage.getItem("settings.previousUser");
+            $scope.user = ls["settings.previousUser"];
         })
         .controller('timeController', function ($scope, settings) {
 

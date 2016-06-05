@@ -8,9 +8,9 @@
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     </head>
     <body ng-app="webkitMaterial" ng-style="backgroundStyle">
-        <div class="ng-cloak" id="wrapper" layout="column" layout-align="center stretch">
+        <div id="wrapper" layout="column" layout-align="center stretch">
             <md-button id="help-button" class="md-icon-button" aria-label="Help" ng-click="$root.card = 'help'"><i class="fa fa-question-circle"></i></md-button>
-            <main layout="column" layout-align="center center" flex ng-switch on="$root.card">
+            <main class="ng-cloak" layout="column" layout-align="center center" flex ng-switch on="$root.card">
                 <!-- Login card -->
                 <md-card id="login" ng-class="animation" ng-style="animationDuration" ng-controller="loginController" ng-switch-default>
                     <md-card-content>
@@ -43,8 +43,8 @@
                                         </md-option>
                                     </md-select>
                                 </md-input-container>
-                                <md-button type="submit" ng-hide="state == 'signingin'" ng-disabled="state == 'signingin'"><i class="fa fa-sign-in"></i> Sign in</md-button>
-                                <md-button type="submit" ng-show="state == 'signingin'" ng-disabled="true"><i class="fa fa-circle-o-notch fa-spin" style="padding: 1px;"></i> Signing in...</md-button>
+                                <md-button type="submit" ng-if="state != 'signingin'"><i class="fa fa-sign-in"></i> Sign in</md-button>
+                                <md-button type="submit" ng-if="state == 'signingin'" ng-disabled="true"><i class="fa fa-circle-o-notch fa-spin" style="padding: 1px;"></i> Signing in...</md-button>
                             </form>
                         </div>
                     </md-card-content>
@@ -199,16 +199,16 @@
 
             <!-- Footer -->
             <footer layout="row" align="center center">
-                <md-button ng-click="$root.card = 'shutdown'">
+                <md-button ng-click="$root.card = 'shutdown'" ng-show="ldm.can_shutdown">
                     <i class="fa fa-power-off"></i> Shutdown
                 </md-button>
-                <md-button ng-click="$root.card = 'restart'">
+                <md-button ng-click="$root.card = 'restart'" ng-show="ldm.can_restart">
                     <i class="fa fa-refresh"></i> Restart
                 </md-button>
-                <md-button ng-click="$root.card = 'suspend'">
+                <md-button ng-click="$root.card = 'suspend'"  ng-show="ldm.can_suspend">
                     <i class="fa fa-power-off fa-rotate-90"></i> Suspend
                 </md-button>
-                <md-button ng-click="$root.card = 'hibernate'">
+                <md-button ng-click="$root.card = 'hibernate'" ng-show="ldm.can_hibernate">
                     <i class="fa fa-power-off"></i> Hibernate
                 </md-button>
                 <md-button ng-click="$root.card = 'settings'">
@@ -221,24 +221,26 @@
             </footer>
         </div>
 
+        <!-- Login Mock -->
+        <script src="assets/bower_components/lightdm-webkit-theme-developer-helper/mock.js"></script>
+
         <!-- Required libs -->
         <script src="assets/js/jquery.js"></script>
         <script src="assets/bower_components/color-scheme-js/lib/color-scheme.min.js"></script>
 
-        <!-- Login -->
-        <script src="assets/js/mock.js"></script>
-        <!--<script src="assets/js/clock.js"></script>
-        <script src="assets/js/login.js"></script>
-        <script src="assets/js/settings.js"></script>
-        <script src="assets/js/dialogs.js"></script>-->
-
-        <!-- Material -->
+        <!-- Angular -->
         <script src="assets/bower_components/angular/angular.min.js"></script>
+        <script src="assets/bower_components/angular-cookies/angular-cookies.min.js"></script>
         <script src="assets/bower_components/angular-load/angular-load.js"></script>
         <script src="assets/bower_components/angular-aria/angular-aria.min.js"></script>
         <script src="assets/bower_components/angular-animate/angular-animate.min.js"></script>
         <script src="assets/bower_components/angular-messages/angular-messages.min.js"></script>
         <script src="assets/bower_components/angular-material/angular-material.min.js"></script>
+        
+        <!-- Storage Support -->
+        <script src="assets/bower_components/ngstorage/ngStorage.js"></script>
+        
+        <!-- App -->
         <script src="assets/js/app.js"></script>
 
         <div id="particles"></div>

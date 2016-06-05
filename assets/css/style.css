@@ -55,7 +55,7 @@ footer button.md-button, #clock {
     font-size: 12px;
 }
 
-ng-cloak {
+.ng-cloak {
     display: none;
 }
 
