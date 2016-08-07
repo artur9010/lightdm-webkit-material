@@ -1,4 +1,6 @@
 ## A Material design LightDM Webkit2 greeter theme
+## [PROJECT ABANDONED]
+### You can fork it and develop it according to your tastes.
 
 This is a theme for LightDM Webkit2 (`lightdm-webkit2-greeter`).
 
