@@ -43,8 +43,8 @@
                                         </md-option>
                                     </md-select>
                                 </md-input-container>
-                                <md-button type="submit" ng-hide="state == 'signingin'" ng-disabled="state == 'signingin'"><i class="fa fa-sign-in"></i> Sign in</md-button>
-                                <md-button type="submit" ng-show="state == 'signingin'" ng-disabled="true"><i class="fa fa-circle-o-notch fa-spin" style="padding: 1px;"></i> Signing in...</md-button>
+                                <md-button id="submit-button" type="submit" ng-hide="state == 'signingin'" ng-disabled="state == 'signingin'"><i class="fa fa-sign-in"></i> Sign in</md-button>
+                                <md-button id="submit-loading" type="submit" ng-show="state == 'signingin'" ng-disabled="true"><i class="fa fa-circle-o-notch fa-spin" style="padding: 1px;"></i> Signing in...</md-button>
                             </form>
                         </div>
                     </md-card-content>
