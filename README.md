@@ -1,4 +1,6 @@
 ## A Material design LightDM Webkit2 greeter theme
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fartur9010%2Flightdm-webkit-material.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fartur9010%2Flightdm-webkit-material?ref=badge_shield)
+
 ## [PROJECT ABANDONED]
 ### You can fork it and develop it according to your tastes.
 
@@ -70,3 +72,7 @@ or
 
 ### Other
 Fallback image background: No Man's Sky
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fartur9010%2Flightdm-webkit-material.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fartur9010%2Flightdm-webkit-material?ref=badge_large)
