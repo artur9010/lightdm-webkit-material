@@ -124,6 +124,11 @@ ng-cloak {
         font-size: 14px;
     }
 }
+.login {
+    display: flex;
+    justify-content: center;
+}
+
 @media only screen and (max-device-width:480px){
     /* styles for mobile browsers smaller than 480px; (iPhone) */
 }
